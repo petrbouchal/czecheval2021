@@ -34,8 +34,8 @@ meta() %>%
   meta_name("github-repo" = "petrbouchal/czecheval2021") %>% 
   meta_social(
     title = "Surviving Data Analysis: An Evaluator's Gentle Introduction to R",
-    url = "https://petrbouchal.xyz/",
-    image = "https://petrbouchal.xyz/czecheval2021/slides/twitter_card.png",
+    url = "https://petrbouchal.xyz/czecheval2021",
+    image = "https://petrbouchal.xyz/czecheval2021/card.png",
     image_alt = "Social Alt",
     og_type = "website",
     og_locale = "en_UK",
