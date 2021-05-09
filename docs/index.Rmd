@@ -1,0 +1,112 @@
+---
+title: "Surviving Data Analysis: An Evaluator's Gentle Introduction to R"
+output:
+  html_document:
+    css: docs.css
+    toc: false
+    toc_depth: 3
+    pandoc_args: !expr ptrr::pandoc_quotes()
+    toc_float:
+      collapse: false
+    includes:
+      in_header: [meta.html]
+      # in_header: [meta.html, matomo.html]
+lang: en
+---
+
+```{r, include=F}
+library(fontawesome)
+library(xaringanExtra)
+
+knitr::opts_chunk$set(echo = F)
+
+col_icon <- "#00f"
+```
+
+
+```{r meta, echo=F}
+library(metathis)
+meta() %>%
+  meta_general(
+    description = "Surviving Data Analysis: An Evaluator's Gentle Introduction to R",
+    generator = "Rmadkown + pandoc"
+  ) %>% 
+  meta_name("github-repo" = "petrbouchal/czecheval2021") %>% 
+  meta_social(
+    title = "Surviving Data Analysis: An Evaluator's Gentle Introduction to R",
+    url = "https://petrbouchal.xyz/",
+    image = "https://petrbouchal.xyz/czecheval2021/slides/twitter_card.png",
+    image_alt = "Social Alt",
+    og_type = "website",
+    og_locale = "en_UK",
+    og_author = "Petr Bouchal",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@petrbouchal"
+  ) %>% 
+  write_meta("meta.html")
+```
+
+> Materials, slides and other background for participants
+
+Training workshop for the [2021 Annual Conference of the Czech Evaluation Society](https://czecheval.cz/cs/Konference/Konference-CES-2021)
+
+8 June 2021
+
+This page will contain all materials for the workshop, including slides, and post-workshop 'what next' references. 
+
+The code for all materials, including this page, is [on Github](https://github.com/petrbouchal/).
+
+# {.tabset}
+
+## The Workshop
+
+### What it is about
+
+This workshop is for those overwhelmed with piles of Excel files and “who knows how Alice did this calculation last year in data-final-v2-fin.xlsx” situations. It is also aimed at those who have been gathering up the courage to start programming with data or generally would like to up their data game.
+
+- It will introduce the R programming language and provide a teaser of tools that evaluators will find most handy: project organisation, data input, data transformation and visualisation, accessing and using data from official sources, creating maps and building reproducible reports. You will get your first try of handling data in R and pointers to resources for learning further.
+- You will receive instructions for (easy) technical setup before the workshop but you won’t need to install any software on your machine to take part in the workshop.
+- No prior knowledge of R or programming is required. If you attended the [R data analysis workshop](https://petrbouchal.xyz/eval2020) at the 2020 MMR Evaluation conference, this will cover similar ground, with more focus on real-life applications. If you know a bit of R or used it way back in university, this will get you up to date on the R toolkit.
+
+### Skills and tools you will encounter
+
+We will focus on tools to let you improve the core steps of any data analysis:
+
+- reading data from common sources (Excel, CSV)
+- data cleaning and wrangling (using `dplyr` and other `tidyverse` tools)
+- data visualisation using `ggplot2`
+- producing reports using Rmarkdown
+- accessing and using data from official sources (Eurostat etc.)
+- project organisation and basic reproducibility tools and workflows
+
+### How we will work
+
+This will be romp through the basic tools you need; we will not go in-depth on all of them, but you will get a sense of how the different parts of the toolkit fit into the data analysis process and where to learn more about them.
+
+We will work with a "whole game" analysis to let you see and experience how these different tools work together to make the whole process of a data analysis more manageable: more effective, transparent, repeatable, and maintainable.
+
+## Pre-workshop prep
+
+### `r fa("clock", fill = col_icon)` in preparation
+
+Closer to the date of the workshop, this page will contain instructions to help you get ready for the workshop, inclusing technical setup.
+
+## At the workshop
+
+### `r fa("clock", fill = col_icon)` in preparation
+
+Closer to the date of the workshop, this page will contain materials for the workshop for download.
+
+## Slides 
+
+### `r fa("clock", fill = col_icon)` in preparation
+
+```{r}
+# embed_xaringan("slides/index.html", border = "none")
+```
+
+
+## After the workshop
+
+### `r fa("clock", fill = col_icon)` in preparation
+
