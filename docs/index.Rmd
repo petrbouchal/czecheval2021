@@ -88,9 +88,36 @@ We will work with a "whole game" analysis to let you see and experience how thes
 
 ## Pre-workshop prep
 
-### `r fa("clock", fill = col_icon)` in preparation
 
-Closer to the date of the workshop, this page will contain instructions to help you get ready for the workshop, inclusing technical setup.
+### Technical prep
+
+#### 1. Computer requirements
+
+All you will need for the workshop:
+
+- any computer fast enough to browse the web
+- with a modern web browser (Firefox, Chrome, Safari, Internet Explorer 11, Microsoft Edge).
+
+It does not matter what operating system you use.
+
+#### 2. RStudio Cloud
+
+During the workshop, we will use th RStudio Cloud service.
+That will let us get to work with RStudio and R without needing to install anything. The RStudio Cloud interface looks and works the same as if you installed RStudio on your machine (which you may wish to do later). 
+
+(RStudio is one of the applications you can use to do data analysis in R - there are others, in the same way that there are multiple web browsers for viewing the web.)
+
+You will need a free-of-charge account on RStudio Cloud. You can set it up at https://rstudio.cloud/plans/free, entering either your email address or logging in via a Google or Github account. The free tier only provides limited use but will be enough for the workshop session.
+
+#### 3 Downloading the workshop materials
+
+Before the workshop, this page will provide materials for download. As we start the workshop, we will load the materials into RStudio cloud.
+
+Address for loading materials into RStudio Cloud: https://github.com/petrbouchal/czecheval2020
+
+Address for donwloading the materials to your computer: (e.g. for later use; you will not need to download a copy before the workshop) https://github.com/petrbouchal/czecheval2020/archive/main.zip
+
+Repository with all materials and code on Github: https://github.com/petrbouchal/czecheval2020/
 
 ## At the workshop
 
