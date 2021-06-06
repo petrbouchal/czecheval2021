@@ -1,0 +1,59 @@
+---
+title: "example Rmarkdown"
+author: "Petr Bouchal"
+date: "6/6/2021"
+output: html_document
+---
+
+This is a toy example of an *Rmarkdown document*. If you are looking at the output, it is a HTML document, which you could put online or email to someone. You can open it in your web browser.
+
+The source is *rendered* into the output HTML by *Knitting* the source document. You could also render a PDF or a Word document - check the options under the Knit button.
+
+The title above is set in the YAML header of the Rmarkdown source document -  the bit between the "---" lines at the very top. You could further tweak the options - check the gear ⚙️ icon in the toolbar.
+
+As you can see, we use *Markdown formatting*.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Here are the top lines of a data frame, printed into the output. The lines below between the "fences" are called a *code chunk*.
+
+```{r}
+head(mtcars)
+```
+
+Below is some calculation. You cannot see the code, but...
+
+```{r, echo=FALSE}
+x <- 3*4
+```
+
+We multiplied 3 by 4 and the result is `r x`.
+
+The right number shows in the sentence, because we used inline code, between the backticks.
+
+If you have the source Rmarkdown document open in RStudio, you can run code in chunks (Ctrl/Cmd+Enter) or entire chunks by pressing the green play button (▶︎).The output will appear below the code chunk.
+
+Below we do another calculation, where we show the code and have the output appear:
+
+```{r}
+5*5
+```
+
+(Whether the code and output appear in the output document depends on *chunk options* - click the gear ⚙️ icon on the right of each chunk. There you can set chunk options for each chunk; you can also do it globally in the setup chunk.)
+
+As you can see, emoji and special symbols (čřší) work fine here.
+
+And below is a plot (don't worry about what it shows.)
+
+```{r}
+plot(mtcars$mpg, mtcars$wt)
+```
+
+You can display your data in tables too - there are many more tools to make tables, but here is a basic one:
+
+```{r}
+knitr::kable(head(mtcars))
+```
+

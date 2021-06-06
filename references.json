@@ -1,0 +1,43 @@
+[
+    {
+        "& francis\n_eprint": "https://doi.org/10.1080/00031305.2017.1375989",
+        "DOI": "10.1080/00031305.2017.1375989",
+        "ISSN": "0003-1305",
+        "URL": "https://doi.org/10.1080/00031305.2017.1375989",
+        "accessed": {
+            "date-parts": []
+        },
+        "author": [
+            {
+                "family": "Broman",
+                "given": "Karl W."
+            },
+            {
+                "family": "Woo",
+                "given": "Kara H."
+            }
+        ],
+        "container-title": "The American Statistician",
+        "id": "broman2018",
+        "issue": "1",
+        "issued": {
+            "date-parts": [
+                [
+                    2018,
+                    1,
+                    2
+                ]
+            ]
+        },
+        "key": "NTH2HXC4",
+        "libraryid": "1",
+        "note": "_eprint: https://doi.org/10.1080/00031305.2017.1375989",
+        "page": "2-10",
+        "providerkey": "2509FBBE-5BB0-44C4-B119-6083A81ED673",
+        "publisher": "Taylor",
+        "source": "Taylor and Francis+NEJM",
+        "title": "Data Organization in Spreadsheets",
+        "type": "article-journal",
+        "volume": "72"
+    }
+]
