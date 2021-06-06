@@ -1,0 +1,217 @@
+---
+title: "Exploration of Covid-19 vaccinations in CZ"
+author: "Petr Bouchal"
+date: "6/2/2021"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(tidyverse)
+library(gt)
+options(scipen = 99)
+```
+
+```{r load data}
+vd_url <- "https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19/ockovani.csv"
+vd_raw <- readr::read_csv(vd_url)
+# vd <- readr::read_csv("data-input/vaccines_cz_daily-doses-NUTS3.csv") # or read the data from the downloaded CSV file
+```
+
+```{r}
+head(vd_raw)
+```
+```{r}
+vd <- vd_raw %>% 
+  rename(nuts3 = kraj_nuts_kod,
+         nuts3_name = kraj_nazev,
+         age_group = vekova_skupina,
+         doses_first = prvnich_davek,
+         doses_second = druhych_davek,
+         doses_total = celkem_davek,
+         date = datum,
+         vaccine = vakcina) %>% 
+  mutate(month = lubridate::floor_date(date, "month"))
+```
+
+```{r}
+head(vd)
+```
+
+
+```{r, include=FALSE}
+vd_reg_month <- vd %>% 
+  # there is a row for each day, so let's group by month
+  group_by(month, vaccine, nuts3, nuts3_name) %>%
+  # and summarise for each of those months
+  summarise(doses_total = sum(doses_total)) %>% 
+  ungroup() %>% 
+  arrange(month) %>% 
+  group_by(vaccine, nuts3, nuts3_name) %>% 
+  mutate(doses_cum = cumsum(doses_total))
+```
+
+## Exploration of raw data
+
+Now let's take a look at cumulative doses by *region* and *vaccine*.
+
+```{r}
+vd_reg_month %>% 
+  filter(month < "2021-06-01") %>% 
+  ggplot() + 
+  geom_area(aes(x = month, y = doses_cum, fill = vaccine)) +
+  facet_wrap(~ nuts3_name)
+```
+
+We are using [daily data (CSV)](`r vd_url`) from the [official Covid data store](https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19).
+
+We could also cut the data by day of the week, not caring about regions and vaccine type:
+
+```{r}
+vd_day <- vd %>% 
+  group_by(date) %>% 
+  summarise(doses_daily = sum(doses_total)) %>% 
+  mutate(wday = lubridate::wday(date, label = T, week_start = 1))
+```
+
+```{r}
+ggplot(vd_day, aes(x = date, y = doses_daily)) +
+  geom_col() +
+  facet_grid(~wday)
+```
+
+## Per capita numbers
+
+But if we want to look at regions and compare them meaningfully, we will need to compare number of doses per capita.
+
+That will require regional population data. One place to get them directly into R is from Eurostat via the [{eurostat}](http://ropengov.github.io/eurostat/) package.
+
+A look through the Eurostat data catalogue as retrieved by `get_eurostat_toc()` suggests the `demo_r_pjanaggr3` table is what we want.
+
+```{r}
+pop_all <- eurostat::get_eurostat("demo_r_pjanaggr3")
+pop_cz_reg <- pop_all %>% 
+  # only keep 2020 data for CZ, for all age groups
+  filter(age == "TOTAL", sex == "T",
+         # keep lines where NUTS code is NUTS3, like CZ0NN
+         str_detect(geo, "CZ0[0-9]{2}"), 
+         time == "2020-01-01") %>% 
+  rename(pop = values) # name the column unambiguously
+```
+
+```{r}
+vd_reg_month_pc <- vd_reg_month %>% 
+  left_join(pop_cz_reg, by = c("nuts3" = "geo")) %>% 
+  mutate(per_cap = doses_cum/pop)
+```
+
+Here are the cumulative per capita doses by region and month.
+
+```{r}
+ggplot(vd_reg_month_pc, aes(x = month, y = per_cap, fill = vaccine)) +
+  geom_col() +
+  facet_wrap(~nuts3_name)
+```
+
+It would be nice to put these on a map. We can use the [{giscoR}](https://dieghernan.github.io/giscoR/) package to get the boundaries of regions directly into R. (We could quite easily use a shapefile or GeoJSON file via the {sf} package, which is the state-of-the art toolkit for most spatial data in R.)
+
+```{r}
+nuts_geo <- giscoR::gisco_get_nuts(country = "CZ", resolution = "03") %>% 
+  filter(LEVL_CODE == 3)
+```
+
+```{r}
+vd_reg_month_pc_latest <- vd_reg_month_pc %>% 
+  filter(month == max(month)) %>% # only keep data for latest month, whatever that is
+  group_by(nuts3_name, nuts3) %>% # we don't care about breakdown by vaccine type, so summarise
+  summarise(per_cap = sum(per_cap))
+```
+
+```{r}
+nuts_geo %>% 
+  left_join(vd_reg_month_pc_latest, by = c("NUTS_ID" = "nuts3")) %>% 
+  ggplot(aes(fill = per_cap)) +
+  geom_sf(colour = "white") +
+  labs(fill = "Vaccine doses per capita") +
+  theme_void() +
+  scale_fill_viridis_b(labels = scales::number_format(.01), n.breaks = 6) +
+  theme(legend.position = "bottom") +
+  guides(fill = guide_bins(keywidth = unit(30, "pt")))
+```
+
+```{r}
+max_per_day <- vd_day %>% filter(doses_daily == max(doses_daily))
+max_kraj_per_cap <- vd_reg_month_pc_latest %>% ungroup() %>% filter(per_cap == max(per_cap))
+```
+
+The highest nationwide daily count of vaccine doses has been given on `r strftime(max_per_day$date, "%d %B %Y")`.
+
+The most vaccines per person to date have been given in **`r max_kraj_per_cap$kraj_nazev`: `r round(max_kraj_per_cap$per_cap, digits = 3)`** doses per capita.
+
+Here is a table, ordered by per-capita doses given:
+
+```{r, fig.width=6}
+gt(vd_reg_month_pc_latest %>% 
+     select(nuts3, per_cap) %>% 
+     arrange(desc(per_cap)) %>%  
+     mutate(per_cap = round(per_cap, 3)) %>% 
+     ungroup(),
+       auto_align = T) %>% 
+  cols_width(nuts3_name ~ 200, per_cap ~ 400) %>% 
+  cols_label(nuts3_name = "Kraj", per_cap = "Doses per person") %>% 
+  tab_options(table.width = px(100),
+                  row.striping.background_color = "lightblue")
+```
+
+```{r}
+writexl::write_xlsx(vd_reg_month_pc_latest, "data-output/reg_percap_latest.xlsx")
+```
+
+# Further exercises
+
+What was the first day on which 10 % of people have had their first jab in each region?
+
+```{r}
+vd_reg_day <- vd %>% 
+  group_by(date, nuts3, nuts3_name) %>% 
+   # summarise multiple columns using the same summary function
+  summarise(across(starts_with("doses_"), sum))
+```
+
+```{r}
+threshold <- 0.1
+
+vd_reg_10pc <- vd_reg_day %>% 
+  ungroup() %>% 
+  # order by date so we get the cumulative sums riht
+  arrange(date) %>% 
+  # group by region as we need to calculate cumulative sums across time
+  # for each region
+  group_by(nuts3, nuts3_name) %>% 
+  # do the cumulative sum
+  mutate(doses_first_cum = cumsum(doses_first)) %>% 
+  # add population table, with nuts3 column matching geo column
+  left_join(pop_cz_reg, by = c(nuts3 = "geo")) %>% 
+  # calculate per capita
+  mutate(doses_first_cum_pc = doses_first_cum/pop) %>% 
+  # only keep days when the per capita was above threshold
+  filter(doses_first_cum_pc > threshold) %>% 
+  # find earliest such date for each region
+  group_by(nuts3, nuts3_name) %>% 
+  filter(date == min(date)) %>% 
+  ungroup() %>% 
+  # make regions appear in order of the date when they first hit those 10%
+  mutate(nuts3_name = fct_reorder(nuts3_name, date) %>% fct_rev())
+  
+```
+
+```{r}
+ggplot(vd_reg_10pc, aes(x = date, y = nuts3_name)) +
+  geom_point() +
+  geom_label(aes(label = strftime(date, "%d %b")), 
+             colour = "darkgrey", nudge_x = 2) +
+  theme_minimal() +
+  labs(title = str_glue("Day when each region hit {scales::percent(threshold)} of population with at least first dose"),
+       x = NULL, y = NULL)
+```
