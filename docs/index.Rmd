@@ -127,10 +127,8 @@ Closer to the date of the workshop, this page will contain materials for the wor
 
 ## Slides 
 
-### `r fa("clock", fill = col_icon)` in preparation
-
 ```{r}
-# embed_xaringan("slides/index.html", border = "none")
+embed_xaringan("slides/index.html", border = "none")
 ```
 
 
