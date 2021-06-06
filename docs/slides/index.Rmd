@@ -779,17 +779,19 @@ class: large, middle, inverse
 ---
 class: large
 
-See workshop page for further resources
+See [workshop page](https://petrbouchal.xyz/czecheval2021) for further resources
 
-RStudio learning resources
+RStudio [learning resources](https://education.rstudio.com/learn/beginner/)
 
-\#rstats twitter
+[R for Data Science online book](https://r4ds.had.co.nz/)
+
+[\#rstats twitter](https://mobile.twitter.com/search?q=%23rstats&src=hashtag_click)
 
 Do an online course
 
 Learn git + Github (see [happygitwithr.com/](https://happygitwithr.com/))
 
-Working with Czech public data? Check out packages: {CzechData}, {RCzechia}, {czso}
+Working with Czech public data? Check out packages: {[CzechData](https://jancaha.github.io/CzechData)}, {[RCzechia](https://cran.r-project.org/package=RCzechia)}, {[czso](https://cran.r-project.org/package=czso)}
 
 ---
 class: center, middle, large, inverse
