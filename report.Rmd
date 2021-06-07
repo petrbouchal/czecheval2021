@@ -165,8 +165,12 @@ gt(vd_reg_month_pc_latest %>%
 ```
 
 ```{r}
-writexl::write_xlsx(vd_reg_month_pc_latest, "data-output/reg_percap_latest.xlsx")
+xlsx_export_file <- "data-output/reg_percap_latest.xlsx"
+writexl::write_xlsx(vd_reg_month_pc_latest, 
+                    xlsx_export_file)
 ```
+
+Note that this last table has been exported to Excel: see `r xlsx_export_file`.
 
 # Further exercises
 
