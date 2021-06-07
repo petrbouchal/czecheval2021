@@ -756,8 +756,7 @@ vd_reg_month <- vd %>%
 `r chunk_reveal("ggplot2-example", break_type = "non_seq")`
 ```{r ggplot2-example, eval = F, echo = F}
 ggplot(data = vd_reg_month, #BREAK
-       mapping = aes(x = month, 
-                     y = doses_total_cum) #BREAK2
+       mapping = aes(x = month, y = doses_total_cum) #BREAK2
 ) + #BREAK
   geom_col( #BREAK3
     aes(fill = vaccine) #BREAK4
