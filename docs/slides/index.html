@@ -1127,7 +1127,7 @@ count: false
 ggplot(data = vd_reg_month,
 ) +
   labs(title = "Total doses by region and vaccine type",
-       subtitle = "Cumulative monthly totals") +  # BREAK7
+       subtitle = "Cumulative monthly totals") +
   theme(
   )
 ```
@@ -1148,7 +1148,7 @@ ggplot(data = vd_reg_month,
 *      mapping = aes(x = month, y = doses_total_cum)
 ) +
   labs(title = "Total doses by region and vaccine type",
-       subtitle = "Cumulative monthly totals") +  # BREAK7
+       subtitle = "Cumulative monthly totals") +
   theme(
   )
 ```
@@ -1171,7 +1171,7 @@ ggplot(data = vd_reg_month,
 * geom_col(
 * ) +
   labs(title = "Total doses by region and vaccine type",
-       subtitle = "Cumulative monthly totals") +  # BREAK7
+       subtitle = "Cumulative monthly totals") +
   theme(
   )
 ```
@@ -1195,7 +1195,7 @@ ggplot(data = vd_reg_month,
 *   aes(fill = vaccine)
   ) +
   labs(title = "Total doses by region and vaccine type",
-       subtitle = "Cumulative monthly totals") +  # BREAK7
+       subtitle = "Cumulative monthly totals") +
   theme(
   )
 ```
@@ -1220,7 +1220,7 @@ ggplot(data = vd_reg_month,
   ) +
 * facet_wrap(vars(nuts3_name)) +
   labs(title = "Total doses by region and vaccine type",
-       subtitle = "Cumulative monthly totals") +  # BREAK7
+       subtitle = "Cumulative monthly totals") +
   theme(
   )
 ```
@@ -1246,7 +1246,7 @@ ggplot(data = vd_reg_month,
   facet_wrap(vars(nuts3_name)) +
 * scale_fill_brewer(palette = "Set1") +
   labs(title = "Total doses by region and vaccine type",
-       subtitle = "Cumulative monthly totals") +  # BREAK7
+       subtitle = "Cumulative monthly totals") +
   theme(
   )
 ```
@@ -1272,33 +1272,7 @@ ggplot(data = vd_reg_month,
   facet_wrap(vars(nuts3_name)) +
   scale_fill_brewer(palette = "Set1") +
   labs(title = "Total doses by region and vaccine type",
-       subtitle = "Cumulative monthly totals") +  # BREAK7
-  theme(
-  )
-```
-]
- 
-.panel2-ggplot2-example-non_seq[
-&lt;img src="index_files/figure-html/ggplot2-example_non_seq_07_output-1.png" width="504" /&gt;
-]
-
----
-count: false
- 
-
-.panel1-ggplot2-example-non_seq[
-
-```r
-ggplot(data = vd_reg_month,
-       mapping = aes(x = month, y = doses_total_cum)
-) +
-  geom_col(
-    aes(fill = vaccine)
-  ) +
-  facet_wrap(vars(nuts3_name)) +
-  scale_fill_brewer(palette = "Set1") +
-  labs(title = "Total doses by region and vaccine type",
-       subtitle = "Cumulative monthly totals") +  # BREAK7
+       subtitle = "Cumulative monthly totals") +
   theme(
 *       legend.position = "bottom"
   )
@@ -1306,7 +1280,7 @@ ggplot(data = vd_reg_month,
 ]
  
 .panel2-ggplot2-example-non_seq[
-&lt;img src="index_files/figure-html/ggplot2-example_non_seq_08_output-1.png" width="504" /&gt;
+&lt;img src="index_files/figure-html/ggplot2-example_non_seq_07_output-1.png" width="504" /&gt;
 ]
 
 &lt;style&gt;

@@ -764,9 +764,9 @@ ggplot(data = vd_reg_month, #BREAK
   facet_wrap(vars(nuts3_name)) + #BREAK5
   scale_fill_brewer(palette = "Set1") + #BREAK6
   labs(title = "Total doses by region and vaccine type",
-       subtitle = "Cumulative monthly totals") + # BREAK7
+       subtitle = "Cumulative monthly totals") +
   theme(
-        legend.position = "bottom" #BREAK8
+        legend.position = "bottom" #BREAK7
   ) #BREAK
 
 ```
