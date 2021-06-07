@@ -175,6 +175,23 @@ Dissecting the case study: tools & practices
 
 After we part
 
+???
+
+The case study will provide an overview of the core components of the R toolkit:
+
+- writing code
+- loading and analysing data
+- visualising data
+- blending code and text into automated outputs
+- organising the project
+
+We don't start with teaching you the syntax and usage of R:
+
+- so we don't get bogged down in detail
+- so you understand useful bits in use in the case study (tidyverse)
+
+By the end of today, you won't necessarily understand every line or be able to create it, but you will understand what are the different tools that are needed to build a project like this and where to learn to use them in more depth.
+
 ---
 class: left, middle, inverse
 
@@ -204,6 +221,14 @@ class: left, middle, medium
 
 - Run `renv::restore()` in Console
 
+???
+
+https://rstudio.cloud
+
+https://github.com/petrbouchal/czecheval2021
+
+renv::restore()
+
 ---
 class: left, middle, inverse
 
@@ -215,6 +240,21 @@ class: left, middle, large
 open `report.Rmd`
 
 click  blue "Knit" button on the toolbar > "Knit to HTML"
+
+???
+
+Output
+
+- text and code
+- output: all in one 
+- numbers are update automatically
+
+Directory:
+- Rmd source
+- input data
+- output data
+
+Together, these allow you to run what I call manageable projects.
 
 ---
 class: middle, inverse, large
@@ -228,11 +268,11 @@ class: large, middle
 
 Only do valuable work
 
-do it efficiently
+and do it efficiently
 
 so that you don't go mad,
 
-or your future self or your colleagues
+nor your future self or your colleagues
 
 and so that you can be sure the results are right.
 
@@ -248,6 +288,7 @@ class: medium
 - easily tweaked
 - easily repeated
 - low friction
+- (easy to collaborate on in parallel or in sequence)
 - (clear history of changes)
 
 ]
@@ -282,6 +323,13 @@ reproducible report
 
 production data system
 
+???
+
+-There is a spectrum
+-There are nuances - replication, repetition, reproducible, automated
+
+In different contexts, you will want different standards, but having at least basic reproducibility (i.e. the code will work if someone else runs in order) is good even for the most basic mini projects.
+
 ---
 
 class: large
@@ -306,21 +354,19 @@ Visualisation and reporting
 *RStudio*
 ]
 
----
+???
 
-class: middle, large
+Versus Python?
 
-# A tour of your screen
+By statistitians, for data
 
-.pull-left[
-1. Scripts
-1. Console
-]
+Community = inclusive, ppl. w/varied backgrounds, non-programmers
 
-.pull-right[
-1. Environment + History
-1. Files + Plots + Packages + Help + Viewer
-]
+Versatile: I show you tabular and spatial data, but you can work with anything.
+
+Very good for any kind of modeling.
+
+Used in critical and high-profile applications (science, newsrooms, industry, government).
 
 ---
 
@@ -355,6 +401,42 @@ class: large
 5\. Making projects manageable
 
 ---
+class: middle, large
+
+# A tour of your screen
+
+## RStudio
+
+.pull-left[
+1. Scripts
+1. Console
+]
+
+.pull-right[
+1. Environment + History
+1. Files + Plots + Packages + Help + Viewer
+]
+
+???
+
+We will now take a look at simpler examples of the two core components:
+
+- R code
+- markdown
+
+---
+class: large
+
+1\. Data + code + text = data analysis
+
+**2\. Running code, basic operations**
+
+3\. Working with tabular data
+
+4\. Data visualisation
+
+5\. Making projects manageable
+---
 class: center, middle, large
 
 open `example.md`
@@ -372,54 +454,32 @@ class: large
 .pull-left[
 markdown
 
-plain text
-
-YAML header
-
-source versus output
-
-Visual editor
+- plain text
+- YAML header
+- source versus output
+- Visual Editor
 
 ]
 
 .pull-right[
 Rmarkdown
 
-knitting
-
-code chunk
-
-chunk options
-
-inline code
-
-output formats
+- code chunk
+- chunk options
+- inline code
+- output formats
+- knitting
 
 ]
-
-
-
-
-
-
----
-class: large
-
-1\. Data + code + text = data analysis
-
-**2\. Running code, basic operations**
-
-3\. Working with tabular data
-
-4\. Data visualisation
-
-5\. Making projects manageable
 
 ---
 class: center, middle, large
 
 open `example.R`
 
+???
+
+Autocomplete => how to name variables
 
 ---
 
@@ -433,6 +493,7 @@ class: large
 - Stack Overflow
 - RStudio Community
 - package documentation: vignettes and online
+- [RStudio Cheatsheets](https://rstudio.com/resources/cheatsheets/)
 
 ---
 class: large, middle, center
@@ -639,22 +700,24 @@ class: center, middle, large
 ---
 
 ```{r}
-vd <- readr::read_csv(here::here("data-input/vaccines_cz_daily-doses-NUTS3.csv"))
+vd <- readr::read_csv(here::here("data-input/vaccines_cz_daily-doses-NUTS3.csv")) %>% 
+  rename(date = datum, vaccine = vakcina, 
+         nuts3 = kraj_nuts_kod, 
+         nuts3_name = kraj_nazev,
+         doses_total = celkem_davek)
 ```
 
 `r chunk_reveal("tidyverse-example")`
 ```{r tidyverse-example, eval = FALSE}
 vd %>% 
-  select(datum, vakcina, 
-         nuts3 = kraj_nuts_kod, 
-         doses = celkem_davek) %>%  # BREAK
-  mutate(month = lubridate::floor_date(datum, "month")) %>% # BREAK
-  group_by(month, vakcina, nuts3) %>% # BREAK
-  summarise(doses = sum(doses)) %>%  # BREAK
-  ungroup() %>%  # BREAK
-  group_by(vakcina, nuts3) %>%  # BREAK
-  mutate(cum_doses = cumsum(doses)) %>%  # BREAK
-  arrange(nuts3, vakcina, month) # BREAK
+  select(date, vaccine, nuts3, doses_total) %>% #BREAK
+  mutate(month = lubridate::floor_date(date, "month")) %>% #BREAK
+  group_by(month, vaccine, nuts3) %>% #BREAK
+  summarise(doses_total_monthly = sum(doses_total)) %>%  #BREAK
+  ungroup() %>%  #BREAK
+  group_by(vaccine, nuts3) %>%  #BREAK
+  mutate(doses_total_monthly_cum = cumsum(doses_total_monthly)) %>%  #BREAK
+  arrange(nuts3, vaccine, month) #BREAK
 ```
 
 ---
@@ -676,16 +739,14 @@ class: center, middle, large
 
 ```{r}
 vd_reg_month <- vd %>% 
-  mutate(month = lubridate::floor_date(datum, "month")) %>% 
-  rename(nuts3 = kraj_nuts_kod, nuts3_name = kraj_nazev) %>% 
+  mutate(month = lubridate::floor_date(date, "month")) %>% 
   # there is a row for each day, so let's group by month
-  group_by(month, vakcina, nuts3, nuts3_name) %>%
-  # and summarise for each of those months
-  summarise(total_doses = sum(celkem_davek)) %>% 
+  group_by(month, vaccine, nuts3, nuts3_name) %>%
+  summarise(doses_total = sum(doses_total)) %>% 
   ungroup() %>% 
   arrange(month) %>% 
-  group_by(vakcina, nuts3, nuts3_name) %>% 
-  mutate(cum_doses = cumsum(total_doses))
+  group_by(vaccine, nuts3, nuts3_name) %>% 
+  mutate(doses_total_cum = cumsum(doses_total))
 ```
 
 # ggplot2: The Grammar of Graphics
@@ -695,10 +756,10 @@ vd_reg_month <- vd %>%
 `r chunk_reveal("ggplot2-example", break_type = "non_seq")`
 ```{r ggplot2-example, eval = F, echo = F}
 ggplot(data = vd_reg_month, #BREAK
-       mapping = aes(x = month, y = cum_doses) #BREAK2
+       mapping = aes(x = month, y = doses_total_cum) #BREAK2
 ) + #BREAK
   geom_col( #BREAK3
-    aes(fill = vakcina) #BREAK4
+    aes(fill = vaccine) #BREAK4
   ) + #BREAK3
   facet_wrap(vars(nuts3_name)) + #BREAK5
   scale_fill_brewer(palette = "Set1") + #BREAK6
@@ -716,14 +777,14 @@ Assign variables/columns to aestherics in `mapping = aes(...)`; asign fixed valu
 .pull-left[
 ```{r, echo = TRUE, fig.height = 6}
 ggplot(data = vd_reg_month,
-       mapping = aes(x = month, y = total_doses)) +
-  geom_col(aes(fill = vakcina)) #<<
+       mapping = aes(x = month, y = doses_total)) +
+  geom_col(aes(fill = vaccine)) #<<
 ```
 ]
 .pull-right[
 ```{r, echo = TRUE, fig.height = 6}
 ggplot(data = vd_reg_month, 
-       mapping = aes(x = month, y = total_doses)) +
+       mapping = aes(x = month, y = doses_total)) +
   geom_col(fill = "red")  #<<
 ```
 ]
@@ -792,6 +853,10 @@ Do an online course
 Learn git + Github (see [happygitwithr.com/](https://happygitwithr.com/))
 
 Working with Czech public data? Check out packages: {[CzechData](https://jancaha.github.io/CzechData)}, {[RCzechia](https://cran.r-project.org/package=RCzechia)}, {[czso](https://cran.r-project.org/package=czso)}
+
+???
+
+https://docs.google.com/forms/d/e/1FAIpQLSemjKMGKcsML5icIT7wfQ01rP5DiXJsYbr0dwJo3nwRHnIhfw/viewform?usp=sf_link
 
 ---
 class: center, middle, large, inverse

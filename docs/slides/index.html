@@ -131,6 +131,23 @@ Dissecting the case study: tools &amp; practices
 
 After we part
 
+???
+
+The case study will provide an overview of the core components of the R toolkit:
+
+- writing code
+- loading and analysing data
+- visualising data
+- blending code and text into automated outputs
+- organising the project
+
+We don't start with teaching you the syntax and usage of R:
+
+- so we don't get bogged down in detail
+- so you understand useful bits in use in the case study (tidyverse)
+
+By the end of today, you won't necessarily understand every line or be able to create it, but you will understand what are the different tools that are needed to build a project like this and where to learn to use them in more depth.
+
 ---
 class: left, middle, inverse
 
@@ -160,6 +177,14 @@ class: left, middle, medium
 
 - Run `renv::restore()` in Console
 
+???
+
+https://rstudio.cloud
+
+https://github.com/petrbouchal/czecheval2021
+
+renv::restore()
+
 ---
 class: left, middle, inverse
 
@@ -171,6 +196,21 @@ class: left, middle, large
 open `report.Rmd`
 
 click  blue "Knit" button on the toolbar &gt; "Knit to HTML"
+
+???
+
+Output
+
+- text and code
+- output: all in one 
+- numbers are update automatically
+
+Directory:
+- Rmd source
+- input data
+- output data
+
+Together, these allow you to run what I call manageable projects.
 
 ---
 class: middle, inverse, large
@@ -184,11 +224,11 @@ class: large, middle
 
 Only do valuable work
 
-do it efficiently
+and do it efficiently
 
 so that you don't go mad,
 
-or your future self or your colleagues
+nor your future self or your colleagues
 
 and so that you can be sure the results are right.
 
@@ -204,6 +244,7 @@ class: medium
 - easily tweaked
 - easily repeated
 - low friction
+- (easy to collaborate on in parallel or in sequence)
 - (clear history of changes)
 
 ]
@@ -238,6 +279,13 @@ reproducible report
 
 production data system
 
+???
+
+-There is a spectrum
+-There are nuances - replication, repetition, reproducible, automated
+
+In different contexts, you will want different standards, but having at least basic reproducibility (i.e. the code will work if someone else runs in order) is good even for the most basic mini projects.
+
 ---
 
 class: large
@@ -262,21 +310,19 @@ Visualisation and reporting
 *RStudio*
 ]
 
----
+???
 
-class: middle, large
+Versus Python?
 
-# A tour of your screen
+By statistitians, for data
 
-.pull-left[
-1. Scripts
-1. Console
-]
+Community = inclusive, ppl. w/varied backgrounds, non-programmers
 
-.pull-right[
-1. Environment + History
-1. Files + Plots + Packages + Help + Viewer
-]
+Versatile: I show you tabular and spatial data, but you can work with anything.
+
+Very good for any kind of modeling.
+
+Used in critical and high-profile applications (science, newsrooms, industry, government).
 
 ---
 
@@ -311,6 +357,42 @@ class: large
 5\. Making projects manageable
 
 ---
+class: middle, large
+
+# A tour of your screen
+
+## RStudio
+
+.pull-left[
+1. Scripts
+1. Console
+]
+
+.pull-right[
+1. Environment + History
+1. Files + Plots + Packages + Help + Viewer
+]
+
+???
+
+We will now take a look at simpler examples of the two core components:
+
+- R code
+- markdown
+
+---
+class: large
+
+1\. Data + code + text = data analysis
+
+**2\. Running code, basic operations**
+
+3\. Working with tabular data
+
+4\. Data visualisation
+
+5\. Making projects manageable
+---
 class: center, middle, large
 
 open `example.md`
@@ -328,54 +410,32 @@ class: large
 .pull-left[
 markdown
 
-plain text
-
-YAML header
-
-source versus output
-
-Visual editor
+- plain text
+- YAML header
+- source versus output
+- Visual Editor
 
 ]
 
 .pull-right[
 Rmarkdown
 
-knitting
-
-code chunk
-
-chunk options
-
-inline code
-
-output formats
+- code chunk
+- chunk options
+- inline code
+- output formats
+- knitting
 
 ]
-
-
-
-
-
-
----
-class: large
-
-1\. Data + code + text = data analysis
-
-**2\. Running code, basic operations**
-
-3\. Working with tabular data
-
-4\. Data visualisation
-
-5\. Making projects manageable
 
 ---
 class: center, middle, large
 
 open `example.R`
 
+???
+
+Autocomplete =&gt; how to name variables
 
 ---
 
@@ -389,6 +449,7 @@ class: large
 - Stack Overflow
 - RStudio Community
 - package documentation: vignettes and online
+- [RStudio Cheatsheets](https://rstudio.com/resources/cheatsheets/)
 
 ---
 class: large, middle, center
@@ -608,30 +669,30 @@ count: false
 
 ```
 # A tibble: 61,898 x 8
-   datum      vakcina  kraj_nuts_kod kraj_nazev     vekova_skupina prvnich_davek
-   &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;          &lt;chr&gt;                  &lt;dbl&gt;
- 1 2020-12-27 Comirna… CZ010         Hlavní město … 18-24                     49
- 2 2020-12-27 Comirna… CZ010         Hlavní město … 25-29                    110
- 3 2020-12-27 Comirna… CZ010         Hlavní město … 30-34                    102
- 4 2020-12-27 Comirna… CZ010         Hlavní město … 35-39                    111
- 5 2020-12-27 Comirna… CZ010         Hlavní město … 40-44                    169
- 6 2020-12-27 Comirna… CZ010         Hlavní město … 45-49                    156
- 7 2020-12-27 Comirna… CZ010         Hlavní město … 50-54                    128
- 8 2020-12-27 Comirna… CZ010         Hlavní město … 55-59                     96
- 9 2020-12-27 Comirna… CZ010         Hlavní město … 60-64                     85
-10 2020-12-27 Comirna… CZ010         Hlavní město … 65-69                     79
-11 2020-12-27 Comirna… CZ010         Hlavní město … 70-74                     48
-12 2020-12-27 Comirna… CZ010         Hlavní město … 75-79                     19
-13 2020-12-27 Comirna… CZ010         Hlavní město … 80+                       24
-14 2020-12-27 Comirna… CZ064         Jihomoravský … 25-29                      3
-15 2020-12-27 Comirna… CZ064         Jihomoravský … 30-34                      7
-16 2020-12-27 Comirna… CZ064         Jihomoravský … 35-39                      8
-17 2020-12-27 Comirna… CZ064         Jihomoravský … 40-44                      6
-18 2020-12-27 Comirna… CZ064         Jihomoravský … 45-49                     10
-19 2020-12-27 Comirna… CZ064         Jihomoravský … 50-54                     14
-20 2020-12-27 Comirna… CZ064         Jihomoravský … 55-59                     11
+   date       vaccine   nuts3 nuts3_name         vekova_skupina prvnich_davek
+   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;              &lt;chr&gt;                  &lt;dbl&gt;
+ 1 2020-12-27 Comirnaty CZ010 Hlavní město Praha 18-24                     49
+ 2 2020-12-27 Comirnaty CZ010 Hlavní město Praha 25-29                    110
+ 3 2020-12-27 Comirnaty CZ010 Hlavní město Praha 30-34                    102
+ 4 2020-12-27 Comirnaty CZ010 Hlavní město Praha 35-39                    111
+ 5 2020-12-27 Comirnaty CZ010 Hlavní město Praha 40-44                    169
+ 6 2020-12-27 Comirnaty CZ010 Hlavní město Praha 45-49                    156
+ 7 2020-12-27 Comirnaty CZ010 Hlavní město Praha 50-54                    128
+ 8 2020-12-27 Comirnaty CZ010 Hlavní město Praha 55-59                     96
+ 9 2020-12-27 Comirnaty CZ010 Hlavní město Praha 60-64                     85
+10 2020-12-27 Comirnaty CZ010 Hlavní město Praha 65-69                     79
+11 2020-12-27 Comirnaty CZ010 Hlavní město Praha 70-74                     48
+12 2020-12-27 Comirnaty CZ010 Hlavní město Praha 75-79                     19
+13 2020-12-27 Comirnaty CZ010 Hlavní město Praha 80+                       24
+14 2020-12-27 Comirnaty CZ064 Jihomoravský kraj  25-29                      3
+15 2020-12-27 Comirnaty CZ064 Jihomoravský kraj  30-34                      7
+16 2020-12-27 Comirnaty CZ064 Jihomoravský kraj  35-39                      8
+17 2020-12-27 Comirnaty CZ064 Jihomoravský kraj  40-44                      6
+18 2020-12-27 Comirnaty CZ064 Jihomoravský kraj  45-49                     10
+19 2020-12-27 Comirnaty CZ064 Jihomoravský kraj  50-54                     14
+20 2020-12-27 Comirnaty CZ064 Jihomoravský kraj  55-59                     11
 # … with 61,878 more rows, and 2 more variables: druhych_davek &lt;dbl&gt;,
-#   celkem_davek &lt;dbl&gt;
+#   doses_total &lt;dbl&gt;
 ```
 ]
 
@@ -643,9 +704,7 @@ count: false
 
 ```r
 vd %&gt;%
-* select(datum, vakcina,
-*        nuts3 = kraj_nuts_kod,
-*        doses = celkem_davek)   # BREAK
+* select(date, vaccine, nuts3, doses_total)
 ```
 ]
  
@@ -653,28 +712,28 @@ vd %&gt;%
 
 ```
 # A tibble: 61,898 x 4
-   datum      vakcina   nuts3 doses
-   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;
- 1 2020-12-27 Comirnaty CZ010    49
- 2 2020-12-27 Comirnaty CZ010   110
- 3 2020-12-27 Comirnaty CZ010   102
- 4 2020-12-27 Comirnaty CZ010   111
- 5 2020-12-27 Comirnaty CZ010   169
- 6 2020-12-27 Comirnaty CZ010   156
- 7 2020-12-27 Comirnaty CZ010   128
- 8 2020-12-27 Comirnaty CZ010    96
- 9 2020-12-27 Comirnaty CZ010    85
-10 2020-12-27 Comirnaty CZ010    79
-11 2020-12-27 Comirnaty CZ010    48
-12 2020-12-27 Comirnaty CZ010    19
-13 2020-12-27 Comirnaty CZ010    24
-14 2020-12-27 Comirnaty CZ064     3
-15 2020-12-27 Comirnaty CZ064     7
-16 2020-12-27 Comirnaty CZ064     8
-17 2020-12-27 Comirnaty CZ064     6
-18 2020-12-27 Comirnaty CZ064    10
-19 2020-12-27 Comirnaty CZ064    14
-20 2020-12-27 Comirnaty CZ064    11
+   date       vaccine   nuts3 doses_total
+   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;
+ 1 2020-12-27 Comirnaty CZ010          49
+ 2 2020-12-27 Comirnaty CZ010         110
+ 3 2020-12-27 Comirnaty CZ010         102
+ 4 2020-12-27 Comirnaty CZ010         111
+ 5 2020-12-27 Comirnaty CZ010         169
+ 6 2020-12-27 Comirnaty CZ010         156
+ 7 2020-12-27 Comirnaty CZ010         128
+ 8 2020-12-27 Comirnaty CZ010          96
+ 9 2020-12-27 Comirnaty CZ010          85
+10 2020-12-27 Comirnaty CZ010          79
+11 2020-12-27 Comirnaty CZ010          48
+12 2020-12-27 Comirnaty CZ010          19
+13 2020-12-27 Comirnaty CZ010          24
+14 2020-12-27 Comirnaty CZ064           3
+15 2020-12-27 Comirnaty CZ064           7
+16 2020-12-27 Comirnaty CZ064           8
+17 2020-12-27 Comirnaty CZ064           6
+18 2020-12-27 Comirnaty CZ064          10
+19 2020-12-27 Comirnaty CZ064          14
+20 2020-12-27 Comirnaty CZ064          11
 # … with 61,878 more rows
 ```
 ]
@@ -687,10 +746,8 @@ count: false
 
 ```r
 vd %&gt;%
-  select(datum, vakcina,
-         nuts3 = kraj_nuts_kod,
-         doses = celkem_davek) %&gt;%  # BREAK
-* mutate(month = lubridate::floor_date(datum, "month"))   # BREAK
+  select(date, vaccine, nuts3, doses_total) %&gt;%
+* mutate(month = lubridate::floor_date(date, "month"))
 ```
 ]
  
@@ -698,28 +755,28 @@ vd %&gt;%
 
 ```
 # A tibble: 61,898 x 5
-   datum      vakcina   nuts3 doses month     
-   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt; &lt;date&gt;    
- 1 2020-12-27 Comirnaty CZ010    49 2020-12-01
- 2 2020-12-27 Comirnaty CZ010   110 2020-12-01
- 3 2020-12-27 Comirnaty CZ010   102 2020-12-01
- 4 2020-12-27 Comirnaty CZ010   111 2020-12-01
- 5 2020-12-27 Comirnaty CZ010   169 2020-12-01
- 6 2020-12-27 Comirnaty CZ010   156 2020-12-01
- 7 2020-12-27 Comirnaty CZ010   128 2020-12-01
- 8 2020-12-27 Comirnaty CZ010    96 2020-12-01
- 9 2020-12-27 Comirnaty CZ010    85 2020-12-01
-10 2020-12-27 Comirnaty CZ010    79 2020-12-01
-11 2020-12-27 Comirnaty CZ010    48 2020-12-01
-12 2020-12-27 Comirnaty CZ010    19 2020-12-01
-13 2020-12-27 Comirnaty CZ010    24 2020-12-01
-14 2020-12-27 Comirnaty CZ064     3 2020-12-01
-15 2020-12-27 Comirnaty CZ064     7 2020-12-01
-16 2020-12-27 Comirnaty CZ064     8 2020-12-01
-17 2020-12-27 Comirnaty CZ064     6 2020-12-01
-18 2020-12-27 Comirnaty CZ064    10 2020-12-01
-19 2020-12-27 Comirnaty CZ064    14 2020-12-01
-20 2020-12-27 Comirnaty CZ064    11 2020-12-01
+   date       vaccine   nuts3 doses_total month     
+   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt; &lt;date&gt;    
+ 1 2020-12-27 Comirnaty CZ010          49 2020-12-01
+ 2 2020-12-27 Comirnaty CZ010         110 2020-12-01
+ 3 2020-12-27 Comirnaty CZ010         102 2020-12-01
+ 4 2020-12-27 Comirnaty CZ010         111 2020-12-01
+ 5 2020-12-27 Comirnaty CZ010         169 2020-12-01
+ 6 2020-12-27 Comirnaty CZ010         156 2020-12-01
+ 7 2020-12-27 Comirnaty CZ010         128 2020-12-01
+ 8 2020-12-27 Comirnaty CZ010          96 2020-12-01
+ 9 2020-12-27 Comirnaty CZ010          85 2020-12-01
+10 2020-12-27 Comirnaty CZ010          79 2020-12-01
+11 2020-12-27 Comirnaty CZ010          48 2020-12-01
+12 2020-12-27 Comirnaty CZ010          19 2020-12-01
+13 2020-12-27 Comirnaty CZ010          24 2020-12-01
+14 2020-12-27 Comirnaty CZ064           3 2020-12-01
+15 2020-12-27 Comirnaty CZ064           7 2020-12-01
+16 2020-12-27 Comirnaty CZ064           8 2020-12-01
+17 2020-12-27 Comirnaty CZ064           6 2020-12-01
+18 2020-12-27 Comirnaty CZ064          10 2020-12-01
+19 2020-12-27 Comirnaty CZ064          14 2020-12-01
+20 2020-12-27 Comirnaty CZ064          11 2020-12-01
 # … with 61,878 more rows
 ```
 ]
@@ -732,11 +789,9 @@ count: false
 
 ```r
 vd %&gt;%
-  select(datum, vakcina,
-         nuts3 = kraj_nuts_kod,
-         doses = celkem_davek) %&gt;%  # BREAK
-  mutate(month = lubridate::floor_date(datum, "month")) %&gt;%  # BREAK
-* group_by(month, vakcina, nuts3)   # BREAK
+  select(date, vaccine, nuts3, doses_total) %&gt;%
+  mutate(month = lubridate::floor_date(date, "month")) %&gt;%
+* group_by(month, vaccine, nuts3)
 ```
 ]
  
@@ -744,29 +799,29 @@ vd %&gt;%
 
 ```
 # A tibble: 61,898 x 5
-# Groups:   month, vakcina, nuts3 [280]
-   datum      vakcina   nuts3 doses month     
-   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt; &lt;date&gt;    
- 1 2020-12-27 Comirnaty CZ010    49 2020-12-01
- 2 2020-12-27 Comirnaty CZ010   110 2020-12-01
- 3 2020-12-27 Comirnaty CZ010   102 2020-12-01
- 4 2020-12-27 Comirnaty CZ010   111 2020-12-01
- 5 2020-12-27 Comirnaty CZ010   169 2020-12-01
- 6 2020-12-27 Comirnaty CZ010   156 2020-12-01
- 7 2020-12-27 Comirnaty CZ010   128 2020-12-01
- 8 2020-12-27 Comirnaty CZ010    96 2020-12-01
- 9 2020-12-27 Comirnaty CZ010    85 2020-12-01
-10 2020-12-27 Comirnaty CZ010    79 2020-12-01
-11 2020-12-27 Comirnaty CZ010    48 2020-12-01
-12 2020-12-27 Comirnaty CZ010    19 2020-12-01
-13 2020-12-27 Comirnaty CZ010    24 2020-12-01
-14 2020-12-27 Comirnaty CZ064     3 2020-12-01
-15 2020-12-27 Comirnaty CZ064     7 2020-12-01
-16 2020-12-27 Comirnaty CZ064     8 2020-12-01
-17 2020-12-27 Comirnaty CZ064     6 2020-12-01
-18 2020-12-27 Comirnaty CZ064    10 2020-12-01
-19 2020-12-27 Comirnaty CZ064    14 2020-12-01
-20 2020-12-27 Comirnaty CZ064    11 2020-12-01
+# Groups:   month, vaccine, nuts3 [280]
+   date       vaccine   nuts3 doses_total month     
+   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt; &lt;date&gt;    
+ 1 2020-12-27 Comirnaty CZ010          49 2020-12-01
+ 2 2020-12-27 Comirnaty CZ010         110 2020-12-01
+ 3 2020-12-27 Comirnaty CZ010         102 2020-12-01
+ 4 2020-12-27 Comirnaty CZ010         111 2020-12-01
+ 5 2020-12-27 Comirnaty CZ010         169 2020-12-01
+ 6 2020-12-27 Comirnaty CZ010         156 2020-12-01
+ 7 2020-12-27 Comirnaty CZ010         128 2020-12-01
+ 8 2020-12-27 Comirnaty CZ010          96 2020-12-01
+ 9 2020-12-27 Comirnaty CZ010          85 2020-12-01
+10 2020-12-27 Comirnaty CZ010          79 2020-12-01
+11 2020-12-27 Comirnaty CZ010          48 2020-12-01
+12 2020-12-27 Comirnaty CZ010          19 2020-12-01
+13 2020-12-27 Comirnaty CZ010          24 2020-12-01
+14 2020-12-27 Comirnaty CZ064           3 2020-12-01
+15 2020-12-27 Comirnaty CZ064           7 2020-12-01
+16 2020-12-27 Comirnaty CZ064           8 2020-12-01
+17 2020-12-27 Comirnaty CZ064           6 2020-12-01
+18 2020-12-27 Comirnaty CZ064          10 2020-12-01
+19 2020-12-27 Comirnaty CZ064          14 2020-12-01
+20 2020-12-27 Comirnaty CZ064          11 2020-12-01
 # … with 61,878 more rows
 ```
 ]
@@ -779,12 +834,10 @@ count: false
 
 ```r
 vd %&gt;%
-  select(datum, vakcina,
-         nuts3 = kraj_nuts_kod,
-         doses = celkem_davek) %&gt;%  # BREAK
-  mutate(month = lubridate::floor_date(datum, "month")) %&gt;%  # BREAK
-  group_by(month, vakcina, nuts3) %&gt;%  # BREAK
-* summarise(doses = sum(doses))   # BREAK
+  select(date, vaccine, nuts3, doses_total) %&gt;%
+  mutate(month = lubridate::floor_date(date, "month")) %&gt;%
+  group_by(month, vaccine, nuts3) %&gt;%
+* summarise(doses_total_monthly = sum(doses_total))
 ```
 ]
  
@@ -792,29 +845,29 @@ vd %&gt;%
 
 ```
 # A tibble: 280 x 4
-# Groups:   month, vakcina [21]
-   month      vakcina   nuts3 doses
-   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;
- 1 2020-12-01 Comirnaty CZ010  5522
- 2 2020-12-01 Comirnaty CZ020    19
- 3 2020-12-01 Comirnaty CZ032    15
- 4 2020-12-01 Comirnaty CZ041     1
- 5 2020-12-01 Comirnaty CZ042   147
- 6 2020-12-01 Comirnaty CZ053    11
- 7 2020-12-01 Comirnaty CZ063     1
- 8 2020-12-01 Comirnaty CZ064  5026
- 9 2020-12-01 Comirnaty CZ071   211
-10 2020-12-01 Comirnaty CZ080   816
-11 2021-01-01 Comirnaty CZ010 67937
-12 2021-01-01 Comirnaty CZ020 21110
-13 2021-01-01 Comirnaty CZ031 18702
-14 2021-01-01 Comirnaty CZ032 13483
-15 2021-01-01 Comirnaty CZ041  5431
-16 2021-01-01 Comirnaty CZ042 11138
-17 2021-01-01 Comirnaty CZ051  7964
-18 2021-01-01 Comirnaty CZ052 14203
-19 2021-01-01 Comirnaty CZ053  8470
-20 2021-01-01 Comirnaty CZ063  9903
+# Groups:   month, vaccine [21]
+   month      vaccine   nuts3 doses_total_monthly
+   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt;               &lt;dbl&gt;
+ 1 2020-12-01 Comirnaty CZ010                5522
+ 2 2020-12-01 Comirnaty CZ020                  19
+ 3 2020-12-01 Comirnaty CZ032                  15
+ 4 2020-12-01 Comirnaty CZ041                   1
+ 5 2020-12-01 Comirnaty CZ042                 147
+ 6 2020-12-01 Comirnaty CZ053                  11
+ 7 2020-12-01 Comirnaty CZ063                   1
+ 8 2020-12-01 Comirnaty CZ064                5026
+ 9 2020-12-01 Comirnaty CZ071                 211
+10 2020-12-01 Comirnaty CZ080                 816
+11 2021-01-01 Comirnaty CZ010               67937
+12 2021-01-01 Comirnaty CZ020               21110
+13 2021-01-01 Comirnaty CZ031               18702
+14 2021-01-01 Comirnaty CZ032               13483
+15 2021-01-01 Comirnaty CZ041                5431
+16 2021-01-01 Comirnaty CZ042               11138
+17 2021-01-01 Comirnaty CZ051                7964
+18 2021-01-01 Comirnaty CZ052               14203
+19 2021-01-01 Comirnaty CZ053                8470
+20 2021-01-01 Comirnaty CZ063                9903
 # … with 260 more rows
 ```
 ]
@@ -827,13 +880,11 @@ count: false
 
 ```r
 vd %&gt;%
-  select(datum, vakcina,
-         nuts3 = kraj_nuts_kod,
-         doses = celkem_davek) %&gt;%  # BREAK
-  mutate(month = lubridate::floor_date(datum, "month")) %&gt;%  # BREAK
-  group_by(month, vakcina, nuts3) %&gt;%  # BREAK
-  summarise(doses = sum(doses)) %&gt;%  # BREAK
-* ungroup()   # BREAK
+  select(date, vaccine, nuts3, doses_total) %&gt;%
+  mutate(month = lubridate::floor_date(date, "month")) %&gt;%
+  group_by(month, vaccine, nuts3) %&gt;%
+  summarise(doses_total_monthly = sum(doses_total)) %&gt;%
+* ungroup()
 ```
 ]
  
@@ -841,28 +892,28 @@ vd %&gt;%
 
 ```
 # A tibble: 280 x 4
-   month      vakcina   nuts3 doses
-   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;
- 1 2020-12-01 Comirnaty CZ010  5522
- 2 2020-12-01 Comirnaty CZ020    19
- 3 2020-12-01 Comirnaty CZ032    15
- 4 2020-12-01 Comirnaty CZ041     1
- 5 2020-12-01 Comirnaty CZ042   147
- 6 2020-12-01 Comirnaty CZ053    11
- 7 2020-12-01 Comirnaty CZ063     1
- 8 2020-12-01 Comirnaty CZ064  5026
- 9 2020-12-01 Comirnaty CZ071   211
-10 2020-12-01 Comirnaty CZ080   816
-11 2021-01-01 Comirnaty CZ010 67937
-12 2021-01-01 Comirnaty CZ020 21110
-13 2021-01-01 Comirnaty CZ031 18702
-14 2021-01-01 Comirnaty CZ032 13483
-15 2021-01-01 Comirnaty CZ041  5431
-16 2021-01-01 Comirnaty CZ042 11138
-17 2021-01-01 Comirnaty CZ051  7964
-18 2021-01-01 Comirnaty CZ052 14203
-19 2021-01-01 Comirnaty CZ053  8470
-20 2021-01-01 Comirnaty CZ063  9903
+   month      vaccine   nuts3 doses_total_monthly
+   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt;               &lt;dbl&gt;
+ 1 2020-12-01 Comirnaty CZ010                5522
+ 2 2020-12-01 Comirnaty CZ020                  19
+ 3 2020-12-01 Comirnaty CZ032                  15
+ 4 2020-12-01 Comirnaty CZ041                   1
+ 5 2020-12-01 Comirnaty CZ042                 147
+ 6 2020-12-01 Comirnaty CZ053                  11
+ 7 2020-12-01 Comirnaty CZ063                   1
+ 8 2020-12-01 Comirnaty CZ064                5026
+ 9 2020-12-01 Comirnaty CZ071                 211
+10 2020-12-01 Comirnaty CZ080                 816
+11 2021-01-01 Comirnaty CZ010               67937
+12 2021-01-01 Comirnaty CZ020               21110
+13 2021-01-01 Comirnaty CZ031               18702
+14 2021-01-01 Comirnaty CZ032               13483
+15 2021-01-01 Comirnaty CZ041                5431
+16 2021-01-01 Comirnaty CZ042               11138
+17 2021-01-01 Comirnaty CZ051                7964
+18 2021-01-01 Comirnaty CZ052               14203
+19 2021-01-01 Comirnaty CZ053                8470
+20 2021-01-01 Comirnaty CZ063                9903
 # … with 260 more rows
 ```
 ]
@@ -875,14 +926,12 @@ count: false
 
 ```r
 vd %&gt;%
-  select(datum, vakcina,
-         nuts3 = kraj_nuts_kod,
-         doses = celkem_davek) %&gt;%  # BREAK
-  mutate(month = lubridate::floor_date(datum, "month")) %&gt;%  # BREAK
-  group_by(month, vakcina, nuts3) %&gt;%  # BREAK
-  summarise(doses = sum(doses)) %&gt;%  # BREAK
-  ungroup() %&gt;%  # BREAK
-* group_by(vakcina, nuts3)   # BREAK
+  select(date, vaccine, nuts3, doses_total) %&gt;%
+  mutate(month = lubridate::floor_date(date, "month")) %&gt;%
+  group_by(month, vaccine, nuts3) %&gt;%
+  summarise(doses_total_monthly = sum(doses_total)) %&gt;%
+  ungroup() %&gt;%
+* group_by(vaccine, nuts3)
 ```
 ]
  
@@ -890,29 +939,29 @@ vd %&gt;%
 
 ```
 # A tibble: 280 x 4
-# Groups:   vakcina, nuts3 [56]
-   month      vakcina   nuts3 doses
-   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;
- 1 2020-12-01 Comirnaty CZ010  5522
- 2 2020-12-01 Comirnaty CZ020    19
- 3 2020-12-01 Comirnaty CZ032    15
- 4 2020-12-01 Comirnaty CZ041     1
- 5 2020-12-01 Comirnaty CZ042   147
- 6 2020-12-01 Comirnaty CZ053    11
- 7 2020-12-01 Comirnaty CZ063     1
- 8 2020-12-01 Comirnaty CZ064  5026
- 9 2020-12-01 Comirnaty CZ071   211
-10 2020-12-01 Comirnaty CZ080   816
-11 2021-01-01 Comirnaty CZ010 67937
-12 2021-01-01 Comirnaty CZ020 21110
-13 2021-01-01 Comirnaty CZ031 18702
-14 2021-01-01 Comirnaty CZ032 13483
-15 2021-01-01 Comirnaty CZ041  5431
-16 2021-01-01 Comirnaty CZ042 11138
-17 2021-01-01 Comirnaty CZ051  7964
-18 2021-01-01 Comirnaty CZ052 14203
-19 2021-01-01 Comirnaty CZ053  8470
-20 2021-01-01 Comirnaty CZ063  9903
+# Groups:   vaccine, nuts3 [56]
+   month      vaccine   nuts3 doses_total_monthly
+   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt;               &lt;dbl&gt;
+ 1 2020-12-01 Comirnaty CZ010                5522
+ 2 2020-12-01 Comirnaty CZ020                  19
+ 3 2020-12-01 Comirnaty CZ032                  15
+ 4 2020-12-01 Comirnaty CZ041                   1
+ 5 2020-12-01 Comirnaty CZ042                 147
+ 6 2020-12-01 Comirnaty CZ053                  11
+ 7 2020-12-01 Comirnaty CZ063                   1
+ 8 2020-12-01 Comirnaty CZ064                5026
+ 9 2020-12-01 Comirnaty CZ071                 211
+10 2020-12-01 Comirnaty CZ080                 816
+11 2021-01-01 Comirnaty CZ010               67937
+12 2021-01-01 Comirnaty CZ020               21110
+13 2021-01-01 Comirnaty CZ031               18702
+14 2021-01-01 Comirnaty CZ032               13483
+15 2021-01-01 Comirnaty CZ041                5431
+16 2021-01-01 Comirnaty CZ042               11138
+17 2021-01-01 Comirnaty CZ051                7964
+18 2021-01-01 Comirnaty CZ052               14203
+19 2021-01-01 Comirnaty CZ053                8470
+20 2021-01-01 Comirnaty CZ063                9903
 # … with 260 more rows
 ```
 ]
@@ -925,15 +974,13 @@ count: false
 
 ```r
 vd %&gt;%
-  select(datum, vakcina,
-         nuts3 = kraj_nuts_kod,
-         doses = celkem_davek) %&gt;%  # BREAK
-  mutate(month = lubridate::floor_date(datum, "month")) %&gt;%  # BREAK
-  group_by(month, vakcina, nuts3) %&gt;%  # BREAK
-  summarise(doses = sum(doses)) %&gt;%  # BREAK
-  ungroup() %&gt;%  # BREAK
-  group_by(vakcina, nuts3) %&gt;%  # BREAK
-* mutate(cum_doses = cumsum(doses))   # BREAK
+  select(date, vaccine, nuts3, doses_total) %&gt;%
+  mutate(month = lubridate::floor_date(date, "month")) %&gt;%
+  group_by(month, vaccine, nuts3) %&gt;%
+  summarise(doses_total_monthly = sum(doses_total)) %&gt;%
+  ungroup() %&gt;%
+  group_by(vaccine, nuts3) %&gt;%
+* mutate(doses_total_monthly_cum = cumsum(doses_total_monthly))
 ```
 ]
  
@@ -941,29 +988,29 @@ vd %&gt;%
 
 ```
 # A tibble: 280 x 5
-# Groups:   vakcina, nuts3 [56]
-   month      vakcina   nuts3 doses cum_doses
-   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;     &lt;dbl&gt;
- 1 2020-12-01 Comirnaty CZ010  5522      5522
- 2 2020-12-01 Comirnaty CZ020    19        19
- 3 2020-12-01 Comirnaty CZ032    15        15
- 4 2020-12-01 Comirnaty CZ041     1         1
- 5 2020-12-01 Comirnaty CZ042   147       147
- 6 2020-12-01 Comirnaty CZ053    11        11
- 7 2020-12-01 Comirnaty CZ063     1         1
- 8 2020-12-01 Comirnaty CZ064  5026      5026
- 9 2020-12-01 Comirnaty CZ071   211       211
-10 2020-12-01 Comirnaty CZ080   816       816
-11 2021-01-01 Comirnaty CZ010 67937     73459
-12 2021-01-01 Comirnaty CZ020 21110     21129
-13 2021-01-01 Comirnaty CZ031 18702     18702
-14 2021-01-01 Comirnaty CZ032 13483     13498
-15 2021-01-01 Comirnaty CZ041  5431      5432
-16 2021-01-01 Comirnaty CZ042 11138     11285
-17 2021-01-01 Comirnaty CZ051  7964      7964
-18 2021-01-01 Comirnaty CZ052 14203     14203
-19 2021-01-01 Comirnaty CZ053  8470      8481
-20 2021-01-01 Comirnaty CZ063  9903      9904
+# Groups:   vaccine, nuts3 [56]
+   month      vaccine   nuts3 doses_total_monthly doses_total_monthly_cum
+   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt;               &lt;dbl&gt;                   &lt;dbl&gt;
+ 1 2020-12-01 Comirnaty CZ010                5522                    5522
+ 2 2020-12-01 Comirnaty CZ020                  19                      19
+ 3 2020-12-01 Comirnaty CZ032                  15                      15
+ 4 2020-12-01 Comirnaty CZ041                   1                       1
+ 5 2020-12-01 Comirnaty CZ042                 147                     147
+ 6 2020-12-01 Comirnaty CZ053                  11                      11
+ 7 2020-12-01 Comirnaty CZ063                   1                       1
+ 8 2020-12-01 Comirnaty CZ064                5026                    5026
+ 9 2020-12-01 Comirnaty CZ071                 211                     211
+10 2020-12-01 Comirnaty CZ080                 816                     816
+11 2021-01-01 Comirnaty CZ010               67937                   73459
+12 2021-01-01 Comirnaty CZ020               21110                   21129
+13 2021-01-01 Comirnaty CZ031               18702                   18702
+14 2021-01-01 Comirnaty CZ032               13483                   13498
+15 2021-01-01 Comirnaty CZ041                5431                    5432
+16 2021-01-01 Comirnaty CZ042               11138                   11285
+17 2021-01-01 Comirnaty CZ051                7964                    7964
+18 2021-01-01 Comirnaty CZ052               14203                   14203
+19 2021-01-01 Comirnaty CZ053                8470                    8481
+20 2021-01-01 Comirnaty CZ063                9903                    9904
 # … with 260 more rows
 ```
 ]
@@ -976,16 +1023,14 @@ count: false
 
 ```r
 vd %&gt;%
-  select(datum, vakcina,
-         nuts3 = kraj_nuts_kod,
-         doses = celkem_davek) %&gt;%  # BREAK
-  mutate(month = lubridate::floor_date(datum, "month")) %&gt;%  # BREAK
-  group_by(month, vakcina, nuts3) %&gt;%  # BREAK
-  summarise(doses = sum(doses)) %&gt;%  # BREAK
-  ungroup() %&gt;%  # BREAK
-  group_by(vakcina, nuts3) %&gt;%  # BREAK
-  mutate(cum_doses = cumsum(doses)) %&gt;%  # BREAK
-* arrange(nuts3, vakcina, month)  # BREAK
+  select(date, vaccine, nuts3, doses_total) %&gt;%
+  mutate(month = lubridate::floor_date(date, "month")) %&gt;%
+  group_by(month, vaccine, nuts3) %&gt;%
+  summarise(doses_total_monthly = sum(doses_total)) %&gt;%
+  ungroup() %&gt;%
+  group_by(vaccine, nuts3) %&gt;%
+  mutate(doses_total_monthly_cum = cumsum(doses_total_monthly)) %&gt;%
+* arrange(nuts3, vaccine, month)
 ```
 ]
  
@@ -993,29 +1038,29 @@ vd %&gt;%
 
 ```
 # A tibble: 280 x 5
-# Groups:   vakcina, nuts3 [56]
-   month      vakcina                  nuts3  doses cum_doses
-   &lt;date&gt;     &lt;chr&gt;                    &lt;chr&gt;  &lt;dbl&gt;     &lt;dbl&gt;
- 1 2020-12-01 Comirnaty                CZ010   5522      5522
- 2 2021-01-01 Comirnaty                CZ010  67937     73459
- 3 2021-02-01 Comirnaty                CZ010  75930    149389
- 4 2021-03-01 Comirnaty                CZ010 124294    273683
- 5 2021-04-01 Comirnaty                CZ010 158353    432036
- 6 2021-05-01 Comirnaty                CZ010 299988    732024
- 7 2021-06-01 Comirnaty                CZ010  57208    789232
- 8 2021-04-01 COVID-19 Vaccine Janssen CZ010    660       660
- 9 2021-05-01 COVID-19 Vaccine Janssen CZ010   4256      4916
-10 2021-06-01 COVID-19 Vaccine Janssen CZ010   1477      6393
-11 2021-01-01 COVID-19 Vaccine Moderna CZ010      1         1
-12 2021-02-01 COVID-19 Vaccine Moderna CZ010      2         3
-13 2021-03-01 COVID-19 Vaccine Moderna CZ010  17060     17063
-14 2021-04-01 COVID-19 Vaccine Moderna CZ010  23557     40620
-15 2021-05-01 COVID-19 Vaccine Moderna CZ010  25304     65924
-16 2021-06-01 COVID-19 Vaccine Moderna CZ010   5297     71221
-17 2021-02-01 VAXZEVRIA                CZ010   1280      1280
-18 2021-03-01 VAXZEVRIA                CZ010  20688     21968
-19 2021-04-01 VAXZEVRIA                CZ010  16838     38806
-20 2021-05-01 VAXZEVRIA                CZ010  18308     57114
+# Groups:   vaccine, nuts3 [56]
+   month      vaccine             nuts3 doses_total_monthly doses_total_monthly…
+   &lt;date&gt;     &lt;chr&gt;               &lt;chr&gt;               &lt;dbl&gt;                &lt;dbl&gt;
+ 1 2020-12-01 Comirnaty           CZ010                5522                 5522
+ 2 2021-01-01 Comirnaty           CZ010               67937                73459
+ 3 2021-02-01 Comirnaty           CZ010               75930               149389
+ 4 2021-03-01 Comirnaty           CZ010              124294               273683
+ 5 2021-04-01 Comirnaty           CZ010              158353               432036
+ 6 2021-05-01 Comirnaty           CZ010              299988               732024
+ 7 2021-06-01 Comirnaty           CZ010               57208               789232
+ 8 2021-04-01 COVID-19 Vaccine J… CZ010                 660                  660
+ 9 2021-05-01 COVID-19 Vaccine J… CZ010                4256                 4916
+10 2021-06-01 COVID-19 Vaccine J… CZ010                1477                 6393
+11 2021-01-01 COVID-19 Vaccine M… CZ010                   1                    1
+12 2021-02-01 COVID-19 Vaccine M… CZ010                   2                    3
+13 2021-03-01 COVID-19 Vaccine M… CZ010               17060                17063
+14 2021-04-01 COVID-19 Vaccine M… CZ010               23557                40620
+15 2021-05-01 COVID-19 Vaccine M… CZ010               25304                65924
+16 2021-06-01 COVID-19 Vaccine M… CZ010                5297                71221
+17 2021-02-01 VAXZEVRIA           CZ010                1280                 1280
+18 2021-03-01 VAXZEVRIA           CZ010               20688                21968
+19 2021-04-01 VAXZEVRIA           CZ010               16838                38806
+20 2021-05-01 VAXZEVRIA           CZ010               18308                57114
 # … with 260 more rows
 ```
 ]
@@ -1100,7 +1145,7 @@ count: false
 
 ```r
 ggplot(data = vd_reg_month,
-*      mapping = aes(x = month, y = cum_doses)
+*      mapping = aes(x = month, y = doses_total_cum)
 ) +
   labs(title = "Total doses by region and vaccine type",
        subtitle = "Cumulative monthly totals") +  # BREAK7
@@ -1121,7 +1166,7 @@ count: false
 
 ```r
 ggplot(data = vd_reg_month,
-       mapping = aes(x = month, y = cum_doses)
+       mapping = aes(x = month, y = doses_total_cum)
 ) +
 * geom_col(
 * ) +
@@ -1144,10 +1189,10 @@ count: false
 
 ```r
 ggplot(data = vd_reg_month,
-       mapping = aes(x = month, y = cum_doses)
+       mapping = aes(x = month, y = doses_total_cum)
 ) +
   geom_col(
-*   aes(fill = vakcina)
+*   aes(fill = vaccine)
   ) +
   labs(title = "Total doses by region and vaccine type",
        subtitle = "Cumulative monthly totals") +  # BREAK7
@@ -1168,10 +1213,10 @@ count: false
 
 ```r
 ggplot(data = vd_reg_month,
-       mapping = aes(x = month, y = cum_doses)
+       mapping = aes(x = month, y = doses_total_cum)
 ) +
   geom_col(
-    aes(fill = vakcina)
+    aes(fill = vaccine)
   ) +
 * facet_wrap(vars(nuts3_name)) +
   labs(title = "Total doses by region and vaccine type",
@@ -1193,10 +1238,10 @@ count: false
 
 ```r
 ggplot(data = vd_reg_month,
-       mapping = aes(x = month, y = cum_doses)
+       mapping = aes(x = month, y = doses_total_cum)
 ) +
   geom_col(
-    aes(fill = vakcina)
+    aes(fill = vaccine)
   ) +
   facet_wrap(vars(nuts3_name)) +
 * scale_fill_brewer(palette = "Set1") +
@@ -1219,10 +1264,10 @@ count: false
 
 ```r
 ggplot(data = vd_reg_month,
-       mapping = aes(x = month, y = cum_doses)
+       mapping = aes(x = month, y = doses_total_cum)
 ) +
   geom_col(
-    aes(fill = vakcina)
+    aes(fill = vaccine)
   ) +
   facet_wrap(vars(nuts3_name)) +
   scale_fill_brewer(palette = "Set1") +
@@ -1245,10 +1290,10 @@ count: false
 
 ```r
 ggplot(data = vd_reg_month,
-       mapping = aes(x = month, y = cum_doses)
+       mapping = aes(x = month, y = doses_total_cum)
 ) +
   geom_col(
-    aes(fill = vakcina)
+    aes(fill = vaccine)
   ) +
   facet_wrap(vars(nuts3_name)) +
   scale_fill_brewer(palette = "Set1") +
@@ -1301,8 +1346,8 @@ Assign variables/columns to aestherics in `mapping = aes(...)`; asign fixed valu
 
 ```r
 ggplot(data = vd_reg_month,
-       mapping = aes(x = month, y = total_doses)) +
-* geom_col(aes(fill = vakcina))
+       mapping = aes(x = month, y = doses_total)) +
+* geom_col(aes(fill = vaccine))
 ```
 
 &lt;img src="index_files/figure-html/unnamed-chunk-5-1.png" width="504" /&gt;
@@ -1311,7 +1356,7 @@ ggplot(data = vd_reg_month,
 
 ```r
 ggplot(data = vd_reg_month, 
-       mapping = aes(x = month, y = total_doses)) +
+       mapping = aes(x = month, y = doses_total)) +
 * geom_col(fill = "red")
 ```
 
@@ -1382,6 +1427,10 @@ Do an online course
 Learn git + Github (see [happygitwithr.com/](https://happygitwithr.com/))
 
 Working with Czech public data? Check out packages: {[CzechData](https://jancaha.github.io/CzechData)}, {[RCzechia](https://cran.r-project.org/package=RCzechia)}, {[czso](https://cran.r-project.org/package=czso)}
+
+???
+
+https://docs.google.com/forms/d/e/1FAIpQLSemjKMGKcsML5icIT7wfQ01rP5DiXJsYbr0dwJo3nwRHnIhfw/viewform?usp=sf_link
 
 ---
 class: center, middle, large, inverse
