@@ -121,9 +121,13 @@ Repository with all materials and code on Github: https://github.com/petrbouchal
 
 ## At the workshop
 
-### `r fa("clock", fill = col_icon)` in preparation
+To get started, open RStudio Cloud, log in and follow these steps:
 
-Closer to the date of the workshop, this page will contain materials for the workshop for download.
+- *New Project* (down arrow) => *New project from Git*
+- paste `https://github.com/petrbouchal/czecheval2021`, click *Create*
+- run `renv::init()` in the Console
+
+This will also work after the workshop if you want to revisit.
 
 ## Slides 
 
