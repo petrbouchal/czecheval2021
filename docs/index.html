@@ -257,10 +257,13 @@ pre code {
 </div>
 <div id="at-the-workshop" class="section level2">
 <h2>At the workshop</h2>
-<div id="in-preparation" class="section level3">
-<h3><svg style="height:0.8em;top:.04em;position:relative;fill:#00f;" viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm57.1 350.1L224.9 294c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h48c6.6 0 12 5.4 12 12v137.7l63.5 46.2c5.4 3.9 6.5 11.4 2.6 16.8l-28.2 38.8c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg> in preparation</h3>
-<p>Closer to the date of the workshop, this page will contain materials for the workshop for download.</p>
-</div>
+<p>To get started, open RStudio Cloud, log in and follow these steps:</p>
+<ul>
+<li><em>New Project</em> (down arrow) =&gt; <em>New project from Git</em></li>
+<li>paste <code>https://github.com/petrbouchal/czecheval2021</code>, click <em>Create</em></li>
+<li>run <code>renv::init()</code> in the Console</li>
+</ul>
+<p>This will also work after the workshop if you want to revisit.</p>
 </div>
 <div id="slides" class="section level2">
 <h2>Slides</h2>
@@ -269,10 +272,227 @@ pre code {
 <script>fitvids('.shareagain', {players: 'iframe'});</script>
 </div>
 </div>
-<div id="after-the-workshop" class="section level2">
-<h2>After the workshop</h2>
-<div id="in-preparation-1" class="section level3">
-<h3><svg style="height:0.8em;top:.04em;position:relative;fill:#00f;" viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm57.1 350.1L224.9 294c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h48c6.6 0 12 5.4 12 12v137.7l63.5 46.2c5.4 3.9 6.5 11.4 2.6 16.8l-28.2 38.8c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg> in preparation</h3>
+<div id="after-the-workshop" class="section level2 tabset tabset-pills">
+<h2 class="tabset tabset-pills">After the workshop</h2>
+<div id="download-your-project" class="section level3">
+<h3>Download your project</h3>
+<blockquote>
+<p>If you have your local installation of R and RStudio and you just want to open the project that we worked on anew, you can</p>
+<ul>
+<li>open RStudio</li>
+<li>click File &gt; New project</li>
+<li>from Version Control</li>
+<li>paste <code>https://github.com/petrbouchal/czecheval2021</code>, click <em>Create</em></li>
+</ul>
+<p>(see the “Install R” section on how to install R and RStudio)</p>
+</blockquote>
+<p>If you made any changes to the project in RStudio Cloud that you want to keep, you can do the following to get them onto your machine:</p>
+<p><img src="https://community-cdn.rstudio.com/uploads/default/original/3X/1/3/137319c9fc6edac322517b2371b1e1ce3905e8ca.png" /></p>
+<p>You can unpack the resulting zip file, then click the czecheval2021.Rproj file to open the project in RStudio on your machine.</p>
+<p>(see <a href="https://community.rstudio.com/t/how-does-one-download-files-from-rstudio-cloud-onto-desktop/52132" class="uri">https://community.rstudio.com/t/how-does-one-download-files-from-rstudio-cloud-onto-desktop/52132</a>)</p>
+</div>
+<div id="install-r" class="section level3">
+<h3>Install R</h3>
+<p>In short: you need to install</p>
+<ul>
+<li><a href="https://cloud.r-project.org/">R</a> (download and install the binary distribution for your operating system)</li>
+<li>then <a href="rstudio.com/products/rstudio/">RStudio</a> and then install packages as needed.</li>
+</ul>
+<p>To use the project we worked on, you can just run <code>renv::restore()</code> and all the necessary packages will be available for this project.</p>
+<p>You can follow instructions e.g. from na <a href="https://stat545.com/install.html" class="uri">https://stat545.com/install.html</a>.</p>
+</div>
+<div id="keep-learning" class="section level3">
+<h3>Keep learning</h3>
+<div id="explore-the-case-study-further" class="section level4">
+<h4>Explore the case study further</h4>
+<p>During the workshop, we looked at a case study - a report that integrates code, text and visuals in the output.</p>
+<p>If you want to do a bit of follow up after the workshop to keep your learning fresh, I would suggest the following:</p>
+<ul>
+<li>go through the case study (report.Rmd) step by step to make sure you understand what the different steps to</li>
+<li>in the “Per capita numbers” and “Further exercises” sections, take note of where the <code>left_join()</code> function is used, try to figure out what it does</li>
+<li>also look for where the case study uses geographical data from Eurostat - through the {giscoR} package and statistical data from {eurostat}</li>
+<li>have a look at how the geographical data (NUTS region boundaries) is used and visualised.</li>
+</ul>
+</div>
+<div id="quick-start-for-various-tools" class="section level4">
+<h4>Quick start for various tools</h4>
+<p>Aside from looking at the help pages, you can use <a href="https://rstudio.com/resources/cheatsheets/">cheatsheets by RStudio</a> on various tools/packages:</p>
+<ul>
+<li><a href="https://raw.githubusercontent.com/rstudio/cheatftextsheets/master/data-visualization-2.1.pdf">Rstudio</a></li>
+<li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf">Data Import</a></li>
+<li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf">Data Transformation</a></li>
+<li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf">Data Visualization</a></li>
+</ul>
+<div id="intro-to-r-in-czech" class="section level5">
+<h5>Intro to R in Czech</h5>
+<p>The only public intro to R in Czech that I know of is <a href="https://alesvomacka.github.io/Uvod_do_analyzy_dat_v_R">Úvod do analýzy dat v R</a> from the Philosophy Faculty of Charler University (Mazák a Vomáčka 2020)</p>
+</div>
+</div>
+<div id="a-more-thorough-intro-to-r-tidyverse" class="section level4">
+<h4>A more thorough intro to R / tidyverse</h4>
+<p>All learning resources: <a href="https://www.tidyverse.org/learn/" class="uri">https://www.tidyverse.org/learn/</a></p>
+<p>Book: <a href="https://r4ds.had.co.nz/introduction.html" class="uri">https://r4ds.had.co.nz/introduction.html</a></p>
+<p>Video: <a href="https://education.rstudio.com/learn/beginner/" class="uri">https://education.rstudio.com/learn/beginner/</a></p>
+<p>Interactive tutorials: <a href="https://rstudio.cloud/learn/primers/" class="uri">https://rstudio.cloud/learn/primers/</a></p>
+<p>Webinar view: <a href="https://rstudio.com/resources/webinars/a-gentle-introduction-to-tidy-statistics-in-r/" class="uri">https://rstudio.com/resources/webinars/a-gentle-introduction-to-tidy-statistics-in-r/</a></p>
+<p><a href="https://moderndive.netlify.app/1-2-code.html">“Tips on Learning to Code”</a> from the <em>Modern Dive</em> book (see below)</p>
+<p><a href="https://datasciencebox.org/">Data Science in a Box</a></p>
+<p>Selected chapters from [Data Visualization A practical introduction by Kieran Healy (2019)]:</p>
+<ul>
+<li><a href="(https://socviz.co/appendix.html#a-little-more-about-r)">how to read help pages in R</a></li>
+<li><a href="https://socviz.co/gettingstarted.html#work-in-plain-text-using-rmarkdown">working with code in R</a></li>
+<li><a href="(https://socviz.co/appendix.html#a-little-more-about-r)">a quick intro to the basic concepts of working with R</a></li>
+<li><a href="https://socviz.co/appendix.html#a-little-more-about-r">common issues when reading in data</a></li>
+<li><a href="https://socviz.co/appendix.html#a-little-more-about-r">how to write your first function in R</a></li>
+<li><a href="https://socviz.co/appendix.html#a-little-more-about-r">how to manage project directories and files</a></li>
+</ul>
+<p><a href="https://rladiessydney.org/courses/ryouwithme/">RyouWithMe</a> series</p>
+<p>Full-semester R university courses with all materials available online:</p>
+<ul>
+<li><a href="https://www.introds.org/">Intro to Data Science, Mine Ceninkaya-Rundel, Uni of Edinburgh</a></li>
+<li><a href="https://stat545.com/">Stat 545, Jenny Bryan, Uni of British Columbia</a></li>
+</ul>
+<p>A complete list of all online books on R <a href="https://www.bigbookofr.com/" class="uri">https://www.bigbookofr.com/</a></p>
+<p>A searchable list of all R learning resources: <a href="https://www.learnr4free.com/en/index.html" class="uri">https://www.learnr4free.com/en/index.html</a></p>
+</div>
+<div id="getting-started-with-r-if-you-know-excel" class="section level4">
+<h4>Getting started with R if you know Excel</h4>
+<p>see <a href="https://rstudio-conf-2020.github.io/r-for-excel/">this tutorial</a></p>
+<p>Bonus: good practices for storing data in spreadsheets are described in <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989">Data Organization in Spreadsheets (Broman &amp; Woo 2017)</a>.</p>
+</div>
+<div id="visualising-data-in-r" class="section level4">
+<h4>Visualising data in R</h4>
+<p>I warmly recommend the {ggplot2} package - a taster is included in the workshop case study and slides. <a href="https://ggplot2.tidyverse.org/">The intro documentation page</a> for the package also contains references to further resources.</p>
+<p><a href="https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/">This slide deck</a> serves as a comprehensive showcase of what {ggplot2} can do.</p>
+<p>The standard intro to {ggplot2} is <a href="https://ggplot2-book.org/"><em>ggplot2: Elegant Graphics for Data Analysis</em> (Wickham, Navarro a Lin Pedersen 2020) (3. vydání)</a></p>
+<p>A complete overview to visualising data in {ggplot2} is in the book <a href="https://socviz.co/">Data Visualization: A practical introduction</a> (Healy 2019), or <a href="https://clauswilke.com/dataviz/">Fundamentals of Data Visualization</a> (Wilke 2019).</p>
+<p>For web-based or interactive graphics you may want to explore <a href="https://plotly-r.com/">{plotly}</a> and <a href="https://davidgohel.github.io/ggiraph/">{ggiraph}</a>.</p>
+</div>
+<div id="tables" class="section level4">
+<h4>Tables</h4>
+<p>The most sensible tool for creating good looking tables in reports now seems to be {<a href="https://gt.rstudio.com/">gt</a>}; you might also be interested in</p>
+<ul>
+<li><a href="http://www.danieldsjoberg.com/gtsummary/">{gtsummary}</a>} provides a bunch of extensions for {gt}, including for tabulating model results</li>
+<li><a href="https://davidgohel.github.io/flextable/">{flextable}</a></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown-cookbook/kableextra.html">{kableExtra}</a></li>
+</ul>
+<p>A good overview of options for tabulating data is provided in the <a href="https://bookdown.org/yihui/rmarkdown-cookbook/table-other.html">Rmarkdown cookbook</a>.</p>
+<p>Aside: {skimr} is my favourite package for displaying data summaries.</p>
+</div>
+<div id="more-on-rmarkdown" class="section level4">
+<h4>More on RMarkdown</h4>
+<p><a href="https://rmarkdown.rstudio.com/" class="uri">https://rmarkdown.rstudio.com/</a> and <a href="https://bookdown.org/yihui/rmarkdown-cookbook/">RMarkdown cookbook</a>.</p>
+<p>This covers the various types of outputs you can make in R:</p>
+<ul>
+<li>PDF reports</li>
+<li>Word documents</li>
+<li>webpages and websites</li>
+<li>PDF, Powerpoint and HTML slides</li>
+<li>blogs</li>
+<li>online books</li>
+<li>automated and parametersied reports</li>
+</ul>
+<p>If you care a lot about customising Office documents created in Rmarkdown, you might want to look at <a href="https://ardata-fr.github.io/officeverse/">{officeverse}</a>.</p>
+</div>
+<div id="getting-data-in-and-out-of-r" class="section level4">
+<h4>Getting data in and out of R</h4>
+<p>You will probably use CSV and Excel data as input.</p>
+<p>If you need to read in an Excel file, use <code>read_excel()</code> from the {readxl} package. The help page for the function will tell you how to read specific sheets or how to handle column types correctly (dates etc.)</p>
+<p>For reading in a CSV file, use <code>read_csv()</code> from the <code>readr</code> package.</p>
+<p>To export data from R into Excel, use the {writexl} package or the <code>write_excel_csv()</code>/<code>write_excel_csv2()</code> function from the {readr} package.</p>
+<p>There is also a version of CSV-reading functions in {reader} for reading “European”-style CSV files: decimal comma instead of decimal point, cells separated by semicolons instead of commas. These are functions ending in 2: <code>read/write_csv2()</code>.</p>
+</div>
+<div id="categorical-and-text-data" class="section level4">
+<h4>Categorical and text data</h4>
+<p>If you are used to labelled data from SPSS and Stata, you will find R “factors” familiar: these are columns where individual rows take on one of a finite set of labels, and these labels (called “levels”) can be reordered to change the order in which they appear in tables and charts. Factor columns thus behave differently from character data.</p>
+<p>Factor data is best handled using the {forcats} package (a play on “factors”), another tidyverse package. Tha package documentation at <a href="https://forcats.tidyverse.org/">forcats.tidyverse.org/</a> also provides a good intro to working with categorical data in R.</p>
+<p>Bonus: v poslední době se zlepšují nástroje na analýzu textu v R, včetně češtiny. Obecný úvod do analýzy textu v R kompatibilní s logikou {tidyverse} najdete v knize <a href="https://www.tidytextmining.com/">Tidy Text Mining in R</a>.</p>
+<p>For working with text data, you can use the {<a href="https://stringr.tidyverse.org/">stringr</a>} package. The <a href="https://github.com/rstudio/cheatsheets/blob/master/strings.pdf">cheatsheet</a> also contains on overview of regular expressions (regex), the general-purpose tool for working with string patterns. If you ever handle tasks like “extract a code from this string which starts with two letters followed by three numbers”, you should look at regular expressions.</p>
+</div>
+<div id="how-to-access-useful-data-in-r" class="section level4">
+<h4>How to access useful data in R</h4>
+<p>Below are some data sources useful for evaluators which are easy to access directly from R:</p>
+<ul>
+<li>Eurostat: <a href="https://cran.r-project.org/package=eurostat">{eurostat}</a> R package</li>
+<li>Czech Statistical Office: <a href="https://petrbouchal.xyz/czso">{czso}</a> R package</li>
+<li>OECD: <a href="https://cran.r-project.org/package=OECD">{oecd}</a> R package</li>
+<li>World Bank: <a href="https://nset-ornl.github.io/wbstats/">{wbstats}</a> R package</li>
+<li>Státní pokladna MFČR (Czech public budgets data): <a href="https://petrbouchal.xyz/statnipokladna">{statnipokladna}</a> - contains budgets, income and spending and accounting returns of all Czech public sector organisations, including municipalities.</li>
+</ul>
+<p>All these packages follow the same workflow: first, download the catalogue of available datasets into R, then find the ID of the desired dataset and load it straight into R as a data frame using a dedicated function, passing the ID as a parameter.</p>
+<ul>
+<li>Czech geographical data produced by the geodata authority ČÚZK: packages <a href="https://jancaha.github.io/CzechData/index.html">{CzechData}</a> a {RCzechia}: they follow similar principles, {RCzechia} also provides access to the ČÚZK geocoding service (“enter address, get coordinates”)</li>
+<li>Eurostat spatial data: <a href="https://dieghernan.github.io/giscoR/">{GiscoR}</a> - also includes boundaties of all Czech municipalities. (But watch out for the terms and conditions - give credit and only use non-commercially)</li>
+</ul>
+<p>A broader intro at <a href="https://petrbouchal.xyz/slides/pssau2020-07/" class="uri">https://petrbouchal.xyz/slides/pssau2020-07/</a> (now slightly outdated on R packages, but otherwise valid).</p>
+</div>
+<div id="statistics-in-r" class="section level4">
+<h4>Statistics in R</h4>
+<ul>
+<li><a href="https://moderndive.com/" class="uri">https://moderndive.com/</a></li>
+<li><a href="https://learningstatisticswithr.com/" class="uri">https://learningstatisticswithr.com/</a></li>
+</ul>
+<div id="modelling" class="section level5">
+<h5>Modelling</h5>
+<ul>
+<li>check out the <a href="https://www.tidymodels.org/start/">tidymodels</a> suite of packages</li>
+<li>in particular, and even if your modeling situation is quite simple, {<a href="https://broom.tidymodels.org/">broom</a>} is useful for getting consistent outputs from various models for further use on visualisation, tables or metanalysis, or for running many models in parallel</li>
+</ul>
+</div>
+</div>
+<div id="geographical-data-and-maps-in-r" class="section level4">
+<h4>Geographical data and maps in R</h4>
+<p>R can cover most GIS needs that you would normally handle with QGIS or ESRI, but also allows your spatial and non-spatial tasks to be integrated and all your work to be done in reproducible code.</p>
+<p>An excellent open overview of what can be done in R with geospatial data is <a href="https://bookdown.org/robinlovelace/geocompr/">Geocomputation with R</a> (Lovelace et al. 2019).</p>
+<p>The key package to start with is {sf}; it has very good documentation at <a href="https://r-spatial.github.io/sf/index.html">r-spatial.github.io/sf/</a>.</p>
+<p>For visualising spatial data, you can use {ggplot2} or <a href="https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html">{tmap}</a>, interactive web maps can be made in <a href="https://r-spatial.github.io/mapview/">{mapview}</a> or <a href="https://rstudio.github.io/leaflet/">{leaflet}</a>.</p>
+</div>
+<div id="version-control-using-git-and-github" class="section level4">
+<h4>Version control: using git and Github</h4>
+<p>In order not to get lost in things like <code>script_done_v2_final3_fin.R</code>, you should start using a version control system for your code. The most common tool for this is is <code>git</code>.</p>
+<p>The best getting started guide for using git in R is <a href="https://happygitwithr.com/">happygitwithr.com/</a>.</p>
+<p>A very good conceptual introduction to git for non-programmers is <a href="https://speakerdeck.com/alicebartlett/git-for-humans">Git for Humans</a> by Alice Bartlett.</p>
+</div>
+<div id="good-practice-for-data-analysis-in-r" class="section level4">
+<h4>Good practice for data analysis in R</h4>
+<p>To make sure you don’t get lost in your project, you should follow a few good practices around organising your work:</p>
+<ol style="list-style-type: decimal">
+<li>naming things (files, objects, variables, columns): make sure to read through <a href="https://speakerdeck.com/jennybc/how-to-name-files" class="uri">https://speakerdeck.com/jennybc/how-to-name-files</a> - jsou tam rady užitečné i mimo svět R.</li>
+<li>organising projects in directories: go through <a href="https://rstats.wtf/project-oriented-workflow.html" class="uri">https://rstats.wtf/project-oriented-workflow.html</a></li>
+</ol>
+</div>
+<div id="interactive-web-apps" class="section level4">
+<h4>Interactive web apps</h4>
+<p>see the {shiny} system:</p>
+<ul>
+<li><a href="https://shiny.rstudio.com/" class="uri">https://shiny.rstudio.com/</a></li>
+<li>the <a href="https://mastering-shiny.org/">Mastering Shiny</a> book</li>
+</ul>
+</div>
+<div id="do-ask-people-participate-or-follow-along" class="section level4">
+<h4>Do ask people, participate or follow along</h4>
+<p>One of the reasons I advise people to use R is how helpful and welcoming people are in the R community and willing to answer questions and share what they learn.</p>
+<p>Search/ask</p>
+<ul>
+<li>Google, of course - often if you get stuck, even googling the error message helps</li>
+<li>on <a href="https://community.rstudio.com/">RStudio Community</a></li>
+<li>on twitter <a href="https://twitter.com/hashtag/rstats?lang=en">#rstats</a></li>
+<li>on StackOverflow <a href="https://stackoverflow.com/questions/tagged/r">pod tagem r</a> also with tags named by the relevant package, např. <a href="https://stackoverflow.com/questions/tagged/ggplot2">ggplot2</a>.</li>
+</ul>
+<p>Participate</p>
+<p>Take part in <a href="https://www.tidytuesday.com/">TidyTuesday</a> and <a href="https://rladies.org/">RLadies</a>.</p>
+<p>Some people also do excellent live/recorded coding sessions on video:</p>
+<ul>
+<li><a href="https://www.youtube.com/user/safe4democracy/videos">David Robinson</a> does live codethroughs of TidyTuesday datasets</li>
+<li><a href="https://www.twitch.tv/kierisi">Jesse Mostipak</a> does great Twitch videos</li>
+</ul>
+<p>Follow along</p>
+<ul>
+<li><a href="https://rstudio.com/resources/rstudioconf-2020/">rstudio::conf and rstudio::global</a> conferences</li>
+<li><a href="https://user2021.r-project.org/">UseR conferences</a></li>
+<li><a href="https://jumpingrivers.github.io/meetingsR/events.html">lots of other online events</a></li>
+</ul>
+</div>
 </div>
 </div>
 </div>
