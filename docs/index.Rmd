@@ -295,7 +295,7 @@ If you are used to labelled data from SPSS and Stata, you will find R "factors" 
 
 Factor data is best handled using the {forcats} package (a play on "factors"), another tidyverse package. Tha package documentation at [forcats.tidyverse.org/](https://forcats.tidyverse.org/) also provides a good intro to working with categorical data in R.
 
-Bonus: v poslední době se zlepšují nástroje na analýzu textu v R, včetně češtiny. Obecný úvod do analýzy textu v R kompatibilní s logikou {tidyverse} najdete v knize [Tidy Text Mining in R](https://www.tidytextmining.com/).
+Bonus: recently, the tools available in R for natural language processing and text analysis have been improving fast, including for Czech. A general introduction to text analysis following {tidyverse} principles is available in the open online book [Tidy Text Mining in R](https://www.tidytextmining.com/).
 
 For working with text data, you can use the {[stringr](https://stringr.tidyverse.org/)} package. The [cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/strings.pdf) also contains on overview of regular expressions (regex), the general-purpose tool for working with string patterns. If you ever handle tasks like "extract a code from this string which starts with two letters followed by three numbers", you should look at regular expressions.
 
