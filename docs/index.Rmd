@@ -259,6 +259,8 @@ The most sensible tool for creating good looking tables in reports now seems to 
 - [{flextable}](https://davidgohel.github.io/flextable/)
 - [{kableExtra}](https://bookdown.org/yihui/rmarkdown-cookbook/kableextra.html)
 
+There are great tutorials on using {gt} on Thomas Mock's blog: [10+ Guidelines for Better Tables in R](https://themockup.blog/posts/2020-09-04-10-table-rules-in-r/) and [more](https://themockup.blog/index.html#category:tables) .
+
 A good overview of options for tabulating data is provided in the [Rmarkdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/table-other.html) and in [this {gt} note](https://gt.rstudio.com/index.html#how-gt-fits-in-with-other-packages-that-generate-display-tables) 
 
 Aside: {skimr} is my favourite package for displaying data summaries.
