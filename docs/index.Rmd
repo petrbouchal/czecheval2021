@@ -194,7 +194,7 @@ Aside from looking at the help pages, you can use [cheatsheets by RStudio](https
 
 ##### Intro to R in Czech
 
-The only public intro to R in Czech that I know of is [Úvod do analýzy dat v R](https://alesvomacka.github.io/Uvod_do_analyzy_dat_v_R) from the Philosophy Faculty of Charler University (Mazák a Vomáčka 2020)
+The only public intro to R in Czech that I know of is [Úvod do analýzy dat v R](https://sociology-fa-cu.github.io/Uvod_do_analyzy_dat_v_R/) from the Philosophy Faculty of Charler University (Mazák a Vomáčka 2020)
 
 #### A more thorough intro to R / tidyverse
 
