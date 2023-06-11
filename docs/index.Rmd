@@ -55,7 +55,7 @@ Training workshop for the [2021 Annual Conference of the Czech Evaluation Societ
 
 This page will contain all materials for the workshop, including slides, and post-workshop 'what next' references. 
 
-The code for all materials, including this page, is [on Github](https://github.com/petrbouchal/czecheval2021.
+The code for all materials, including this page, is [on Github](https://github.com/petrbouchal/czecheval2021).
 
 # {.tabset}
 
