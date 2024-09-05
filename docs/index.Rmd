@@ -214,9 +214,9 @@ Webinar view: https://rstudio.com/resources/webinars/a-gentle-introduction-to-ti
 
 Selected chapters from [Data Visualization A practical introduction by Kieran Healy (2019)]:
 
-- [how to read help pages in R]((https://socviz.co/appendix.html#a-little-more-about-r))
+- [how to read help pages in R](https://socviz.co/appendix.html#a-little-more-about-r)
 - [working with code in R](https://socviz.co/gettingstarted.html#work-in-plain-text-using-rmarkdown)
-- [a quick intro to the basic concepts of working with R]((https://socviz.co/appendix.html#a-little-more-about-r))
+- [a quick intro to the basic concepts of working with R](https://socviz.co/appendix.html#a-little-more-about-r)
 - [common issues when reading in data](https://socviz.co/appendix.html#a-little-more-about-r)
 - [how to write your first function in R](https://socviz.co/appendix.html#a-little-more-about-r)
 - [how to manage project directories and files](https://socviz.co/appendix.html#a-little-more-about-r)
